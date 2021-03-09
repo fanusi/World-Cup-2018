@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Swipetest1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="G1M-FM-HqG"/>
+                    <connections>
+                        <segue destination="iFW-C6-CYf" kind="presentation" identifier="goRight" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="l4S-LX-MM3"/>
+                        <segue destination="gBu-bw-pj5" kind="presentation" identifier="goLeft" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="83w-JU-pCD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-413.04347826086962" y="-19.419642857142858"/>
+        </scene>
+        <!--View Controller2-->
+        <scene sceneID="oeW-IQ-WDH">
+            <objects>
+                <viewController id="iFW-C6-CYf" customClass="ViewController2" customModule="Swipetest1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2WY-9I-NMC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9mz-ie-xi6" userLabel="View1">
+                                <rect key="frame" x="0.0" y="44" width="414" height="608.5"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FlS-d8-spN" userLabel="View2">
+                                <rect key="frame" x="0.0" y="652.5" width="414" height="243.5"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2sq-X7-y7E" userLabel="pickerView">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="243.5"/>
+                                    </pickerView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="2sq-X7-y7E" firstAttribute="top" secondItem="FlS-d8-spN" secondAttribute="top" id="PEu-QX-7Ti"/>
+                                    <constraint firstAttribute="bottom" secondItem="2sq-X7-y7E" secondAttribute="bottom" id="RYq-ps-mAq"/>
+                                    <constraint firstAttribute="trailing" secondItem="2sq-X7-y7E" secondAttribute="trailing" id="qIn-Ae-dlj"/>
+                                    <constraint firstItem="2sq-X7-y7E" firstAttribute="leading" secondItem="FlS-d8-spN" secondAttribute="leading" id="zha-77-FvM"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0rP-in-nlY"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                        <constraints>
+                            <constraint firstItem="FlS-d8-spN" firstAttribute="height" secondItem="9mz-ie-xi6" secondAttribute="height" multiplier="0.4" id="1mf-AW-UY4"/>
+                            <constraint firstItem="FlS-d8-spN" firstAttribute="top" secondItem="9mz-ie-xi6" secondAttribute="bottom" id="Qm1-v6-hj4"/>
+                            <constraint firstItem="9mz-ie-xi6" firstAttribute="top" secondItem="0rP-in-nlY" secondAttribute="top" id="Xk0-V2-amP"/>
+                            <constraint firstItem="FlS-d8-spN" firstAttribute="trailing" secondItem="0rP-in-nlY" secondAttribute="trailing" id="XqB-Vn-BEt"/>
+                            <constraint firstItem="9mz-ie-xi6" firstAttribute="leading" secondItem="0rP-in-nlY" secondAttribute="leading" id="YDB-5n-S2L"/>
+                            <constraint firstItem="FlS-d8-spN" firstAttribute="leading" secondItem="0rP-in-nlY" secondAttribute="leading" id="bxx-Sq-0zc"/>
+                            <constraint firstItem="9mz-ie-xi6" firstAttribute="trailing" secondItem="0rP-in-nlY" secondAttribute="trailing" id="kgT-UK-Pzt"/>
+                            <constraint firstAttribute="bottom" secondItem="FlS-d8-spN" secondAttribute="bottom" id="qcT-Qe-gnT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="cRQ-mS-lZN"/>
+                    <connections>
+                        <outlet property="View1" destination="9mz-ie-xi6" id="0Fr-4f-6MO"/>
+                        <outlet property="View2" destination="FlS-d8-spN" id="Z4m-In-RWI"/>
+                        <outlet property="pickerView" destination="2sq-X7-y7E" id="KT5-Fi-tkR"/>
+                        <segue destination="gBu-bw-pj5" kind="presentation" identifier="goRight" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="xbt-6h-VAR"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="goLeft" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="b3d-zO-8Sx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KWo-cP-MsH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="363.768115942029" y="-19.419642857142858"/>
+        </scene>
+        <!--View Controller3-->
+        <scene sceneID="OWH-gR-lcL">
+            <objects>
+                <viewController id="gBu-bw-pj5" customClass="ViewController3" customModule="Swipetest1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EaO-Lq-Job">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="WYv-jy-YfM"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="mJL-9G-p5K"/>
+                    <connections>
+                        <segue destination="iFW-C6-CYf" kind="presentation" identifier="goLeft" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="FCC-he-7AY"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="goRight" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="RLi-KU-rqJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y3A-Fi-nG2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1157" y="-19"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="xbt-6h-VAR"/>
+        <segue reference="FCC-he-7AY"/>
+        <segue reference="b3d-zO-8Sx"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
