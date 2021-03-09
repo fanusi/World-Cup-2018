@@ -21,13 +21,13 @@ class ViewController3: UIViewController {
         leftSwipe.direction = UISwipeGestureRecognizer.Direction.left
         self.view.addGestureRecognizer(leftSwipe)
         
-        let filepath = "/Users/stephanetrouve/Desktop/Projects/Euro-2020-V2-main/Swipetest1/Test1.xlsx"
+        //let filepath = "/Users/stephanetrouve/Desktop/Projects/Euro-2020-V2-main/Swipetest1/Test1.xlsx"
         
         
-//        guard let filepath = Bundle.main.path(forResource: "Test1", ofType: "xlsx") else {
-//
-//            fatalError("Error")
-//        }
+        guard let filepath = Bundle.main.path(forResource: "Test1", ofType: "xlsx") else {
+
+            fatalError("Error n1")
+        }
 
         guard let file = XLSXFile(filepath: filepath) else {
           fatalError("XLSX file at \(filepath) is corrupted or does not exist")

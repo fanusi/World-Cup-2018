@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		551347F50D46D121C7253B58 /* Pods_Swipetest1Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4009956CB5DA1D5238085C97 /* Pods_Swipetest1Tests.framework */; };
+		AE40AEF125F7B21400E00C45 /* Test1.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = AE40AEF025F7B21300E00C45 /* Test1.xlsx */; };
 		AE780E0025DAC82C006C8EEF /* EuroJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE780DFF25DAC82C006C8EEF /* EuroJSON.swift */; };
 		AE780E0825DAC9D9006C8EEF /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE780E0525DAC9D9006C8EEF /* UIScrollView+.swift */; };
 		AE780E0925DAC9D9006C8EEF /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE780E0625DAC9D9006C8EEF /* UIView+.swift */; };
@@ -49,6 +50,7 @@
 		3C2B656EADD14A7152DE33D9 /* Pods-Swipetest1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipetest1.debug.xcconfig"; path = "Target Support Files/Pods-Swipetest1/Pods-Swipetest1.debug.xcconfig"; sourceTree = "<group>"; };
 		4009956CB5DA1D5238085C97 /* Pods_Swipetest1Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swipetest1Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6744F326AAF9474A802FD26 /* Pods-Swipetest1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipetest1Tests.release.xcconfig"; path = "Target Support Files/Pods-Swipetest1Tests/Pods-Swipetest1Tests.release.xcconfig"; sourceTree = "<group>"; };
+		AE40AEF025F7B21300E00C45 /* Test1.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Test1.xlsx; sourceTree = "<group>"; };
 		AE780DFF25DAC82C006C8EEF /* EuroJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EuroJSON.swift; sourceTree = "<group>"; };
 		AE780E0525DAC9D9006C8EEF /* UIScrollView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIScrollView+.swift"; path = "Swipetest1/UIScrollView+.swift"; sourceTree = SOURCE_ROOT; };
 		AE780E0625DAC9D9006C8EEF /* UIView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+.swift"; path = "Swipetest1/UIView+.swift"; sourceTree = SOURCE_ROOT; };
@@ -151,6 +153,7 @@
 				AEB79A0A25DA706900A6CCE0 /* ViewController.swift */,
 				AEB79A3C25DA7F5200A6CCE0 /* ViewController2.swift */,
 				AEB79A4425DA883100A6CCE0 /* ViewController3.swift */,
+				AE40AEF025F7B21300E00C45 /* Test1.xlsx */,
 				AEB79A1225DA706A00A6CCE0 /* Assets.xcassets */,
 				AEB79A1425DA706A00A6CCE0 /* LaunchScreen.storyboard */,
 				AEB79A1725DA706A00A6CCE0 /* Info.plist */,
@@ -186,7 +189,6 @@
 				DAEAEF5A1C367DC596DF3F75 /* Pods-Swipetest1Tests.debug.xcconfig */,
 				A6744F326AAF9474A802FD26 /* Pods-Swipetest1Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -296,6 +298,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE40AEF125F7B21400E00C45 /* Test1.xlsx in Resources */,
 				AEB79A1625DA706A00A6CCE0 /* LaunchScreen.storyboard in Resources */,
 				AEB79A1325DA706A00A6CCE0 /* Assets.xcassets in Resources */,
 				AEB79A0E25DA706900A6CCE0 /* Main.storyboard in Resources */,
