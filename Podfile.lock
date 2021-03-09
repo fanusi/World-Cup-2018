@@ -1,0 +1,24 @@
+PODS:
+  - CoreXLSX (0.14.0):
+    - XMLCoder (~> 0.11.1)
+    - ZIPFoundation (~> 0.9.11)
+  - XMLCoder (0.11.1)
+  - ZIPFoundation (0.9.12)
+
+DEPENDENCIES:
+  - CoreXLSX (~> 0.14.0)
+
+SPEC REPOS:
+  trunk:
+    - CoreXLSX
+    - XMLCoder
+    - ZIPFoundation
+
+SPEC CHECKSUMS:
+  CoreXLSX: 341fab0a6e87ec6c3e0c7df0e91a346a79ad7503
+  XMLCoder: c4638336674de7ba279cd23f2005817d69f538e0
+  ZIPFoundation: e27423c004a5a1410c15933407747374e7c6cb6e
+
+PODFILE CHECKSUM: 1c75cbf669717f8313521cd97831bf8f8ae035c4
+
+COCOAPODS: 1.9.3
