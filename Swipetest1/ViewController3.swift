@@ -32,6 +32,7 @@ class ViewController3: UIViewController {
         guard let file = XLSXFile(filepath: filepath) else {
           fatalError("XLSX file at \(filepath) is corrupted or does not exist")
         }
+        
 
         for wbk in try! file.parseWorkbooks() {
             for (name, path) in try! file.parseWorksheetPathsAndNames(workbook: wbk) {
@@ -43,13 +44,21 @@ class ViewController3: UIViewController {
             
             var r = 0
             var co = 0
+                
+            var a:Int = Int((worksheet.data?.rows[3].cells[3].value)!)!
+            var b:Int = Int((worksheet.data?.rows[4].cells[3].value)!)!
+            
+            print(a)
+            print(b)
+            print(a+b)
+            
             
             for row in worksheet.data?.rows ?? [] {
               
               co = 0
                 
               for c in row.cells {
-                print(c.value)
+
                 let br = view.bounds.width
                 let ho = view.bounds.height
                 let label1 = UILabel(frame: CGRect(x: br * 0.15 + br * 0.20 * CGFloat(co), y: ho * 0.05 + ho * 0.07 * CGFloat(r), width: br * 0.40, height: ho * 0.05))
@@ -68,18 +77,6 @@ class ViewController3: UIViewController {
           }
         }
 
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

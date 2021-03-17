@@ -23,7 +23,6 @@
 		AEB79A2C25DA706A00A6CCE0 /* Swipetest1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB79A2B25DA706A00A6CCE0 /* Swipetest1UITests.swift */; };
 		AEB79A3D25DA7F5200A6CCE0 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB79A3C25DA7F5200A6CCE0 /* ViewController2.swift */; };
 		AEB79A4525DA883100A6CCE0 /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB79A4425DA883100A6CCE0 /* ViewController3.swift */; };
-		AED44CF525FA4A6900626B02 /* Test1.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = AED44CF425FA4A6900626B02 /* Test1.xlsx */; };
 		B130214EE44EC5CDE5A21522 /* Pods_Swipetest1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D33B61814DDB6B30392DC8 /* Pods_Swipetest1.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,7 +70,6 @@
 		AEB79A2D25DA706A00A6CCE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEB79A3C25DA7F5200A6CCE0 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		AEB79A4425DA883100A6CCE0 /* ViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
-		AED44CF425FA4A6900626B02 /* Test1.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Test1.xlsx; sourceTree = "<group>"; };
 		DAEAEF5A1C367DC596DF3F75 /* Pods-Swipetest1Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipetest1Tests.debug.xcconfig"; path = "Target Support Files/Pods-Swipetest1Tests/Pods-Swipetest1Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,7 +152,6 @@
 				AEB79A3C25DA7F5200A6CCE0 /* ViewController2.swift */,
 				AEB79A4425DA883100A6CCE0 /* ViewController3.swift */,
 				AEB79A1225DA706A00A6CCE0 /* Assets.xcassets */,
-				AED44CF425FA4A6900626B02 /* Test1.xlsx */,
 				AEB79A1425DA706A00A6CCE0 /* LaunchScreen.storyboard */,
 				AEB79A1725DA706A00A6CCE0 /* Info.plist */,
 				AEB79A0F25DA706900A6CCE0 /* Swipetest1.xcdatamodeld */,
@@ -298,7 +295,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AED44CF525FA4A6900626B02 /* Test1.xlsx in Resources */,
 				AEB79A1625DA706A00A6CCE0 /* LaunchScreen.storyboard in Resources */,
 				AEB79A1325DA706A00A6CCE0 /* Assets.xcassets in Resources */,
 				AEB79A0E25DA706900A6CCE0 /* Main.storyboard in Resources */,
