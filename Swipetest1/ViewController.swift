@@ -119,7 +119,8 @@ class ViewController: UIViewController {
         
         if PronosA.count > 0 {
 
-            testpronos()
+            //testpronos()
+            realpronos()
             routine()
             createlabels(view1: view1)
             view1.contentSize = CGSize(width: view.frame.width, height: view.frame.height * CGFloat(Double(PronosB.count + 3) * 0.05))
@@ -154,7 +155,7 @@ class ViewController: UIViewController {
         let t:Int = 20
         // Create t+1 test pronos
         
-        let g:Int = 20
+        let g:Int = 19
         // Number of games
         
         let br = view1.bounds.width
@@ -221,7 +222,7 @@ class ViewController: UIViewController {
     
     func calculator (speler: [Pronostiek]) {
         
-        let g:Int = 20
+        let g:Int = 19
         // Number of games
         
         var punten:Int = 0
@@ -322,30 +323,46 @@ class ViewController: UIViewController {
 
             let worksheet = try! file.parseWorksheet(at: path)
             
-            var r = 0
-            var co = 0
-            
-            for row in worksheet.data?.rows ?? [] {
-              
-              co = 0
+            PronosB.removeAll()
                 
-              for c in row.cells {
-                print(c)
-                let br = view.bounds.width
-                let ho = view.bounds.height
-                let label1 = UILabel(frame: CGRect(x: br * 0.15 + br * 0.20 * CGFloat(co), y: ho * 0.05 + ho * 0.07 * CGFloat(r), width: br * 0.40, height: ho * 0.05))
-                label1.textAlignment = NSTextAlignment.left
-                label1.font.withSize(10)
-                label1.text = c.value
-                label1.textColor = .black
-                view.addSubview(label1)
-                co = co + 1
-
-              }
+            let t:Int = 20
+            // Create t+1 test pronos
                 
-            r = r + 1
+            let g:Int = 20
+            // Number of games
+                    
+            for i in 0...t {
+                
+                // Loop players
+                
+                let newArrayFixtures = [Pronostiek(context: self.context)]
+                PronosB.append(newArrayFixtures)
+                
+                PronosB[i][0].user = "User " + String(i+1)
+                PronosB[i][0].fixture_ID = PronosA[0].fixture_ID
+                PronosB[i][0].round = PronosA[0].round
+                PronosB[i][0].home_Goals = Int16((worksheet.data?.rows[1 + g*i].cells[4].value)!)!
+                PronosB[i][0].away_Goals = Int16((worksheet.data?.rows[1 + g*i].cells[5].value)!)!
+                PronosB[i][0].home_Team = PronosA[0].home_Team
+                PronosB[i][0].away_Team = PronosA[0].away_Team
+                
+                for n in 1...(g-1) {
+                    
+                    // Loop games
+                    let newFixture = Pronostiek(context: self.context)
+                    newFixture.user = "User " + String(i+1)
+                    newFixture.fixture_ID = PronosA[n].fixture_ID
+                    newFixture.round = PronosA[n].round
+                    newFixture.home_Goals = Int16((worksheet.data?.rows[(n+1) + g*i].cells[4].value)!)!
+                    newFixture.away_Goals = Int16((worksheet.data?.rows[(n+1) + g*i].cells[5].value)!)!
+                    newFixture.home_Team = PronosA[n].home_Team
+                    newFixture.away_Team = PronosA[n].away_Team
+                    PronosB[i].append(newFixture)
+                    
+                }
                 
             }
+            
           }
         }
     }
