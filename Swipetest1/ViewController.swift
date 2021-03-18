@@ -306,6 +306,8 @@ class ViewController: UIViewController {
     
     func realpronos () {
         
+        var gebruikers: [String] = []
+        
         guard let filepath = Bundle.main.path(forResource: "Test1", ofType: "xlsx") else {
 
             fatalError("Error n1")
@@ -322,6 +324,17 @@ class ViewController: UIViewController {
             }
 
             let worksheet = try! file.parseWorksheet(at: path)
+                
+            if let sharedStrings = try! file.parseSharedStrings() {
+              let columnCStrings = worksheet.cells(atColumns: [ColumnReference("A")!])
+                .compactMap { $0.stringValue(sharedStrings) }
+            
+                gebruikers = columnCStrings
+    
+            }
+            
+            print(gebruikers[0])
+            print(gebruikers[1])
             
             PronosB.removeAll()
                 
@@ -338,7 +351,7 @@ class ViewController: UIViewController {
                 let newArrayFixtures = [Pronostiek(context: self.context)]
                 PronosB.append(newArrayFixtures)
                 
-                PronosB[i][0].user = "User " + String(i+1)
+                PronosB[i][0].user = gebruikers[1 + g*i]
                 PronosB[i][0].fixture_ID = PronosA[0].fixture_ID
                 PronosB[i][0].round = PronosA[0].round
                 PronosB[i][0].home_Goals = Int16((worksheet.data?.rows[1 + g*i].cells[4].value)!)!
@@ -350,7 +363,7 @@ class ViewController: UIViewController {
                     
                     // Loop games
                     let newFixture = Pronostiek(context: self.context)
-                    newFixture.user = "User " + String(i+1)
+                    newFixture.user = gebruikers[(n+1) + g*i]
                     newFixture.fixture_ID = PronosA[n].fixture_ID
                     newFixture.round = PronosA[n].round
                     newFixture.home_Goals = Int16((worksheet.data?.rows[(n+1) + g*i].cells[4].value)!)!
