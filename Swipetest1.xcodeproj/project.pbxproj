@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		551347F50D46D121C7253B58 /* Pods_Swipetest1Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4009956CB5DA1D5238085C97 /* Pods_Swipetest1Tests.framework */; };
+		AE31D5762604B65600C4CB0F /* Scores.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE31D5752604B65600C4CB0F /* Scores.swift */; };
 		AE780E0025DAC82C006C8EEF /* EuroJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE780DFF25DAC82C006C8EEF /* EuroJSON.swift */; };
 		AE780E0825DAC9D9006C8EEF /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE780E0525DAC9D9006C8EEF /* UIScrollView+.swift */; };
 		AE780E0925DAC9D9006C8EEF /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE780E0625DAC9D9006C8EEF /* UIView+.swift */; };
@@ -50,6 +51,7 @@
 		3C2B656EADD14A7152DE33D9 /* Pods-Swipetest1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipetest1.debug.xcconfig"; path = "Target Support Files/Pods-Swipetest1/Pods-Swipetest1.debug.xcconfig"; sourceTree = "<group>"; };
 		4009956CB5DA1D5238085C97 /* Pods_Swipetest1Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swipetest1Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6744F326AAF9474A802FD26 /* Pods-Swipetest1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipetest1Tests.release.xcconfig"; path = "Target Support Files/Pods-Swipetest1Tests/Pods-Swipetest1Tests.release.xcconfig"; sourceTree = "<group>"; };
+		AE31D5752604B65600C4CB0F /* Scores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scores.swift; sourceTree = "<group>"; };
 		AE780DFF25DAC82C006C8EEF /* EuroJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EuroJSON.swift; sourceTree = "<group>"; };
 		AE780E0525DAC9D9006C8EEF /* UIScrollView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIScrollView+.swift"; path = "Swipetest1/UIScrollView+.swift"; sourceTree = SOURCE_ROOT; };
 		AE780E0625DAC9D9006C8EEF /* UIView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+.swift"; path = "Swipetest1/UIView+.swift"; sourceTree = SOURCE_ROOT; };
@@ -159,6 +161,7 @@
 				AEB79A1725DA706A00A6CCE0 /* Info.plist */,
 				AEB79A0F25DA706900A6CCE0 /* Swipetest1.xcdatamodeld */,
 				AE780DFF25DAC82C006C8EEF /* EuroJSON.swift */,
+				AE31D5752604B65600C4CB0F /* Scores.swift */,
 			);
 			path = Swipetest1;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEB79A3D25DA7F5200A6CCE0 /* ViewController2.swift in Sources */,
+				AE31D5762604B65600C4CB0F /* Scores.swift in Sources */,
 				AE780E0825DAC9D9006C8EEF /* UIScrollView+.swift in Sources */,
 				AE780E0A25DAC9D9006C8EEF /* UILabel+.swift in Sources */,
 				AEB79A1125DA706900A6CCE0 /* Swipetest1.xcdatamodeld in Sources */,

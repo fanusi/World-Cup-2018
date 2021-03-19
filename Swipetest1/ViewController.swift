@@ -14,6 +14,9 @@ public var PronosA = [Pronostiek]()
 public var PronosB = [[Pronostiek]]()
 // PronosA contains real scores
 
+var scores = [Scores]()
+// Users and their scores
+
 class ViewController: UIViewController {
     
     //var PronosB = [[Pronostiek]]()
@@ -99,6 +102,7 @@ class ViewController: UIViewController {
                             
                             PronosA.append(newFixture)
                             //try self.context.savePronos2()
+
                         }
                     
                             
@@ -189,14 +193,15 @@ class ViewController: UIViewController {
             //Test 2
             
             label1.textAlignment = NSTextAlignment.left
-            label1.text = PronosB[i][0].user
+            //label1.text = PronosB[i][0].user
+            label1.text = scores[i].user
             label1.font.withSize(12)
             //label.backgroundColor = .red
             label1.textColor = .black
             view1.addSubview(label1)
                                 
             label2.textAlignment = NSTextAlignment.center
-            label2.text = String(puntenSommatie(z: g, speler: PronosB[i]))
+            label2.text = String(scores[i].punten)
             label2.font.withSize(12)
             //label.backgroundColor = .red
             label2.textColor = .black
@@ -223,7 +228,7 @@ class ViewController: UIViewController {
     func calculator (speler: [Pronostiek]) {
         
         let g:Int = 19
-        // Number of games
+        // Number of games g+1
         
         var punten:Int = 0
         
@@ -294,14 +299,22 @@ class ViewController: UIViewController {
     func routine () {
         
         let t:Int = 20
-        // Create t+1 test pronos
+        // t+1 pronos
+        
+        scores.removeAll()
         
         for i in 0...t {
             
             calculator(speler: PronosB[i])
             
+            let newscore = Scores(user: (PronosB[i].first?.user)! , punten: puntenSommatie(z: 19, speler: PronosB[i]))
+            
+            scores.append(newscore)
+            
         }
         
+        scores = scores.sorted(by: { ($0.punten) > ($1.punten) })
+        //PronosB = PronosB.sorted(by: { ($0.last?.statistiek!.punten)! > ($1.last?.statistiek!.punten)! })
     }
     
     func realpronos () {
