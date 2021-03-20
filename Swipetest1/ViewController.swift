@@ -65,7 +65,8 @@ class ViewController: UIViewController {
                     "x-rapidapi-host": "api-football-v1.p.rapidapi.com"
                 ]
 
-                let request = NSMutableURLRequest(url: NSURL(string: "https://api-football-v1.p.rapidapi.com/v2/fixtures/league/403?timezone=Europe%2FLondon")! as URL,
+                //403
+                let request = NSMutableURLRequest(url: NSURL(string: "https://api-football-v1.p.rapidapi.com/v2/fixtures/league/2660?timezone=Europe%2FLondon")! as URL,
                                                     cachePolicy: .useProtocolCachePolicy,
                                                 timeoutInterval: 10.0)
                 request.httpMethod = "GET"
@@ -84,11 +85,14 @@ class ViewController: UIViewController {
                 do {
                             
                     
-                        let g = 297
+                        let g = 305
+                        //g = 297
+                        let start = 271
+                        // start = 261
                         let niveau1 = try decoder.decode(api1.self, from: data!)
                         //print(niveau1)
                         
-                        for n in 0...g {
+                        for n in start...g {
 
                             //print(niveau1.api.fixtures[n].fixture_id)
                             let newFixture = Pronostiek(context: self.context)
@@ -237,52 +241,57 @@ class ViewController: UIViewController {
             //reset punten voor elke match
             punten = 0
             
-            if PronosA[j].home_Goals > PronosA[j].away_Goals && speler[j].home_Goals > speler[j].away_Goals {
-                
-                punten = punten + 1
-                
-                if PronosA[j].home_Goals == speler[j].home_Goals {
+            //If game was not yet played, score is -999
+            if PronosA[j].home_Goals > 0 {
+            
+                if PronosA[j].home_Goals > PronosA[j].away_Goals && speler[j].home_Goals > speler[j].away_Goals {
                     
                     punten = punten + 1
                     
-                }
-                
-                if PronosA[j].away_Goals == speler[j].away_Goals {
+                    if PronosA[j].home_Goals == speler[j].home_Goals {
+                        
+                        punten = punten + 1
+                        
+                    }
                     
-                    punten = punten + 1
+                    if PronosA[j].away_Goals == speler[j].away_Goals {
+                        
+                        punten = punten + 1
+                        
+                    }
                     
                 }
-                
-            }
 
-            if PronosA[j].home_Goals < PronosA[j].away_Goals && speler[j].home_Goals < speler[j].away_Goals {
-                
-                punten = punten + 1
-                
-                if PronosA[j].home_Goals == speler[j].home_Goals {
+                if PronosA[j].home_Goals < PronosA[j].away_Goals && speler[j].home_Goals < speler[j].away_Goals {
                     
                     punten = punten + 1
                     
-                }
-                
-                if PronosA[j].away_Goals == speler[j].away_Goals {
+                    if PronosA[j].home_Goals == speler[j].home_Goals {
+                        
+                        punten = punten + 1
+                        
+                    }
                     
-                    punten = punten + 1
-                    
+                    if PronosA[j].away_Goals == speler[j].away_Goals {
+                        
+                        punten = punten + 1
+                        
+                    }
+                         
                 }
-                     
-            }
 
-            if PronosA[j].home_Goals == PronosA[j].away_Goals && speler[j].home_Goals == speler[j].away_Goals {
-                
-                punten = punten + 1
-                
-                if PronosA[j].home_Goals == speler[j].home_Goals {
+                if PronosA[j].home_Goals == PronosA[j].away_Goals && speler[j].home_Goals == speler[j].away_Goals {
                     
-                    punten = punten + 2
+                    punten = punten + 1
                     
+                    if PronosA[j].home_Goals == speler[j].home_Goals {
+                        
+                        punten = punten + 2
+                        
+                    }
+                         
                 }
-                     
+            
             }
             
             //toewijzen van punten
