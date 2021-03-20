@@ -103,6 +103,9 @@ class ViewController: UIViewController {
                             newFixture.home_Team = niveau1.api.fixtures[n].homeTeam.team_name
                             newFixture.away_Team = niveau1.api.fixtures[n].awayTeam.team_name
                             
+                            print(newFixture.home_Goals)
+                            print(newFixture.away_Goals)
+                            
                             
                             PronosA.append(newFixture)
                             //try self.context.savePronos2()
@@ -242,7 +245,7 @@ class ViewController: UIViewController {
             punten = 0
             
             //If game was not yet played, score is -999
-            if PronosA[j].home_Goals > 0 {
+            if PronosA[j].home_Goals >= 0 {
             
                 if PronosA[j].home_Goals > PronosA[j].away_Goals && speler[j].home_Goals > speler[j].away_Goals {
                     
