@@ -11,8 +11,10 @@ struct fixture: Codable {
     var venue: String
     var round: String
     var fixture_id: Int
+    var status: String
     var awayTeam: AT
     var homeTeam: HT
+    var score: FT
     var goalsAwayTeam: Int
     var goalsHomeTeam: Int
     
@@ -20,10 +22,12 @@ struct fixture: Codable {
            case venue
            case round
            case fixture_id
+           case status
            case awayTeam
            case homeTeam
            case goalsAwayTeam
            case goalsHomeTeam
+           case score
        }
        
        // The Initializer function from Decodable
@@ -35,6 +39,8 @@ struct fixture: Codable {
            fixture_id = try values.decode(Int.self, forKey: .fixture_id)
            awayTeam = try values.decode(AT.self, forKey: .awayTeam)
            homeTeam = try values.decode(HT.self, forKey: .homeTeam)
+           score =  try values.decode(FT.self, forKey: .score)
+           status =  try values.decode(String.self, forKey: .status)
            
            // 3 - Conditional Decoding
            if var goalsAwayTeam =  try values.decodeIfPresent(Int.self, forKey: .goalsAwayTeam) {
@@ -55,11 +61,12 @@ struct fixture: Codable {
                self.round = "NA"
            }
         
-        if var venue =  try values.decodeIfPresent(String.self, forKey: .venue) {
-            self.venue = venue
-        } else {
-            self.venue = "NA"
-        }
+            if var venue =  try values.decodeIfPresent(String.self, forKey: .venue) {
+                self.venue = venue
+            } else {
+                self.venue = "NA"
+            }
+        
         
        }
 }
@@ -78,4 +85,27 @@ struct AT: Codable {
 
 struct HT: Codable {
     var team_name: String
+}
+
+struct FT: Codable {
+    var fulltime: String
+    
+    enum CodingKeys: String, CodingKey {
+           case fulltime
+       }
+    
+    init(from decoder: Decoder) throws {
+        // 1 - Container
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        
+        // 3 - Conditional Decoding
+        if var fulltime =  try values.decodeIfPresent(String.self, forKey: .fulltime) {
+            self.fulltime = fulltime
+        } else {
+            self.fulltime = "NA"
+        }
+        
+    }
+    
 }

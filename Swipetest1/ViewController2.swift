@@ -19,6 +19,26 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
         
+        var fg:Int = 0
+        
+        for n in 0...PronosA.count-1 {
+            
+            var dummy:Int = 0
+                
+            if PronosA[n].status == "Match Finished" && dummy == 0 {
+                fg = fg + 1
+            } else if PronosA[n].status == "First Half" || PronosA[n].status == "Second Half" {
+                fg = n
+                dummy = 1
+            }
+            
+        }
+        
+        print("fg = " + String(fg))
+        
+        self.pickerView.selectRow(fg + 1, inComponent: 0, animated: false)
+        self.pickerView(pickerView, didSelectRow: fg + 1, inComponent: 0)
+        
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction(swipe:)))
         rightSwipe.direction = UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(rightSwipe)

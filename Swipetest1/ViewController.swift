@@ -41,6 +41,7 @@ class ViewController: UIViewController {
             
             //Only parse on app loading
             fixtureParsing()
+
             dummy = 1
             
         }
@@ -102,7 +103,11 @@ class ViewController: UIViewController {
                             newFixture.away_Goals = Int16(niveau1.api.fixtures[n].goalsAwayTeam)
                             newFixture.home_Team = niveau1.api.fixtures[n].homeTeam.team_name
                             newFixture.away_Team = niveau1.api.fixtures[n].awayTeam.team_name
+                            newFixture.fulltime = niveau1.api.fixtures[n].score.fulltime
+                            newFixture.status = niveau1.api.fixtures[n].status
                             
+                            print(newFixture.fulltime!)
+                            print(newFixture.status!)
                             print(newFixture.home_Goals)
                             print(newFixture.away_Goals)
                             
