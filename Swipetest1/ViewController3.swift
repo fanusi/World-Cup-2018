@@ -10,6 +10,9 @@ import CoreXLSX
 
 class ViewController3: UIViewController {
 
+    let size1:Int = 15
+    // Size of each subview
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,62 +24,123 @@ class ViewController3: UIViewController {
         leftSwipe.direction = UISwipeGestureRecognizer.Direction.left
         self.view.addGestureRecognizer(leftSwipe)
         
-        //let filepath = "/Users/stephanetrouve/Desktop/Projects/Euro-2020-V2-main/Swipetest1/Test1.xlsx"
-        
-        
-        guard let filepath = Bundle.main.path(forResource: "Test1", ofType: "xlsx") else {
-
-            fatalError("Error n1")
-        }
-
-        guard let file = XLSXFile(filepath: filepath) else {
-          fatalError("XLSX file at \(filepath) is corrupted or does not exist")
-        }
-        
-
-        for wbk in try! file.parseWorkbooks() {
-            for (name, path) in try! file.parseWorksheetPathsAndNames(workbook: wbk) {
-            if let worksheetName = name {
-              print("This worksheet has a name: \(worksheetName)")
-            }
-
-            let worksheet = try! file.parseWorksheet(at: path)
-            
-            var r = 0
-            var co = 0
-                
-            var a:Int = Int((worksheet.data?.rows[3].cells[3].value)!)!
-            var b:Int = Int((worksheet.data?.rows[4].cells[3].value)!)!
-            
-            print(a)
-            print(b)
-            print(a+b)
-            
-            
-            for row in worksheet.data?.rows ?? [] {
-              
-              co = 0
-                
-              for c in row.cells {
-
-                let br = view.bounds.width
-                let ho = view.bounds.height
-                let label1 = UILabel(frame: CGRect(x: br * 0.15 + br * 0.20 * CGFloat(co), y: ho * 0.05 + ho * 0.07 * CGFloat(r), width: br * 0.40, height: ho * 0.05))
-                label1.textAlignment = NSTextAlignment.left
-                label1.font.withSize(10)
-                label1.text = c.value
-                label1.textColor = .black
-                view.addSubview(label1)
-                co = co + 1
-
-              }
-                
-            r = r + 1
-                
-            }
-          }
-        }
+        playedgames()
 
     }
     
+    func playedgames() {
+            
+            if PronosA.count > 0 {
+            
+                let sview = UIScrollView()
+                sview.showsVerticalScrollIndicator = false
+                sview.translatesAutoresizingMaskIntoConstraints = false
+                sview.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+                view.addSubview(sview)
+                sview.edgeTo(view: view)
+            
+                let br: CGFloat = sview.bounds.width
+                let ho: CGFloat = sview.bounds.height
+                
+                var array = [UIView]()
+                array.removeAll()
+                
+                let n = PronosA.count
+                
+                for _ in 0 ..< n {
+                    array.append(UIView())
+                }
+                
+                for i in 0...n-1 {
+                    
+                    createviews(index1: i, actualview: array[i], superviewer: sview, numberviews: n)
+                
+                }
+                
+                sview.contentSize = CGSize(width: br, height: CGFloat(n + 10) * ho / CGFloat(size1))
+            
+            } else {
+                
+                let br = view.bounds.width
+                let ho = view.bounds.height
+                let label1 = UILabel(frame: CGRect(x: br * 0.40, y: ho * 0.35, width: br * 0.40, height: ho * 0.25))
+                label1.textAlignment = NSTextAlignment.left
+                label1.font.withSize(18)
+                label1.text = "Fetching..."
+                label1.textColor = .black
+                view.addSubview(label1)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                
+                    self.view.subviews.forEach { (item) in
+                    item.removeFromSuperview()
+                    }
+                    self.playedgames()
+                
+                }
+                
+            }
+        
+        }
+        
+        func createviews (index1: Int, actualview: UIView, superviewer: UIScrollView, numberviews: Int) {
+                
+                superviewer.addSubview(actualview)
+            actualview.frame = CGRect(x: 0, y: 0.05 + view.bounds.height / CGFloat(size1) * CGFloat(index1), width: superviewer.bounds.width, height: view.bounds.height / CGFloat(size1))
+                actualview.backgroundColor = .white
+                
+                createlabels(type: 1, superviewer: actualview, teller: index1)
+                createlabels(type: 2, superviewer: actualview, teller: index1)
+                
+            }
+
+        
+        func createlabels (type: Int, superviewer: UIView, teller: Int) {
+            
+            let x0 = superviewer.bounds.width
+            let y0 = superviewer.bounds.height
+            
+            var x1:CGFloat = 0
+            let y1 = y0 * 0
+            let h1 = y0
+            var w1:CGFloat = 0
+            
+            
+            let temp1:String = PronosA[teller].home_Team! + " - " + PronosA[teller].away_Team!
+            let temp2:String = PronosA[teller].fulltime!
+            var temp3:String = ""
+            
+            
+            if type == 1 {
+            
+                x1 = 0.05 * x0
+                w1 = 0.75 * x0
+                
+                temp3 = temp1
+                
+            }
+            
+            if type == 2 {
+            
+                x1 = 0.85 * x0
+                w1 = 0.10 * x0
+                temp3 = temp2
+                
+            }
+            
+                
+            let label = UILabel(frame: CGRect(x: x1, y: y1, width: w1, height: h1))
+            label.textAlignment = NSTextAlignment.center
+            label.text = temp3
+            label.font.withSize(6)
+            if type == 1 {
+                label.textAlignment = NSTextAlignment.left}
+            superviewer.addSubview(label)
+
+            
+        }
+        
+    
 }
+    
+

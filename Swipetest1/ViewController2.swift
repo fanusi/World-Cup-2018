@@ -21,16 +21,23 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
         
         var fg:Int = 0
         
-        for n in 0...PronosA.count-1 {
-            
-            var dummy:Int = 0
+        if PronosA.count > 0 {
+        
+            for n in 0...PronosA.count-1 {
                 
-            if PronosA[n].status == "Match Finished" && dummy == 0 {
-                fg = fg + 1
-            } else if PronosA[n].status == "First Half" || PronosA[n].status == "Second Half" {
-                fg = n
-                dummy = 1
+                var dummy:Int = 0
+                    
+                if PronosA[n].status == "Match Finished" && dummy == 0 {
+                    fg = fg + 1
+                } else if PronosA[n].status == "First Half" || PronosA[n].status == "Second Half" {
+                    fg = n
+                    dummy = 1
+                }
+                
             }
+        } else {
+            
+            fg = -1
             
         }
         
