@@ -14,6 +14,9 @@ public var PronosA = [Pronostiek]()
 public var PronosB = [[Pronostiek]]()
 // PronosA contains real scores
 
+public let b1:CGFloat = 0.15
+// Height of upper bar
+
 var scores = [Scores]()
 // Users and their scores
 
@@ -46,13 +49,22 @@ class ViewController: UIViewController {
             
         }
         
+        let bar1 = UIView()
+        bar1.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * b1)
+        bar1.backgroundColor = .systemGray5
+        view.addSubview(bar1)
+        
+        let mainview = UIView()
+        mainview.frame = CGRect(x: 0, y: view.frame.height * b1, width: view.frame.width, height: view.frame.height * (1-b1))
+        view.addSubview(mainview)
+        
         let sview = UIScrollView()
         sview.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-//        sview.frame = CGRect(x: 0, y: view.frame.height * 0.08, width: view.frame.width, height: view.frame.height * 0.84)
+
         sview.showsVerticalScrollIndicator = false
         
-        self.view.addSubview(sview)
-        sview.edgeTo(view: view)
+        mainview.addSubview(sview)
+        sview.edgeTo(view: mainview)
         scoreView(view1: sview)
         
     }
@@ -139,7 +151,7 @@ class ViewController: UIViewController {
             realpronos()
             routine()
             createlabels(view1: view1)
-            view1.contentSize = CGSize(width: view.frame.width, height: view.frame.height * CGFloat(Double(PronosB.count + 3) * 0.05))
+            view1.contentSize = CGSize(width: view1.frame.width, height: view1.frame.height * CGFloat(Double(PronosB.count + 3) * 0.05))
             
         } else {
             
@@ -177,20 +189,27 @@ class ViewController: UIViewController {
         let br = view1.bounds.width
         let ho = view1.bounds.height
         
-        let label1 = UILabel(frame: CGRect(x: br * 0.15, y: ho * 0.05, width: br * 0.40, height: ho * 0.05))
-        
-        let label2 = UILabel(frame: CGRect(x: br * 0.65, y: ho * 0.05, width: br * 0.20, height: ho * 0.05))
+        let label0 = UILabel(frame: CGRect(x: br * 0.05, y: ho * 0, width: br * 0.10, height: ho * 0.05))
+        let label1 = UILabel(frame: CGRect(x: br * 0.20, y: ho * 0, width: br * 0.40, height: ho * 0.05))
+        let label2 = UILabel(frame: CGRect(x: br * 0.65, y: ho * 0, width: br * 0.20, height: ho * 0.05))
+  
+        label0.textAlignment = NSTextAlignment.center
+        label0.text = "Rank"
+        label0.font = UIFont.boldSystemFont(ofSize: 15.0)
+        //label.backgroundColor = .red
+        label0.textColor = .black
+        view1.addSubview(label0)
         
         label1.textAlignment = NSTextAlignment.left
         label1.text = "Player"
-        label1.font.withSize(12)
+        label1.font = UIFont.boldSystemFont(ofSize: 15.0)
         //label.backgroundColor = .red
         label1.textColor = .black
         view1.addSubview(label1)
                             
         label2.textAlignment = NSTextAlignment.center
         label2.text = "Points"
-        label2.font.withSize(12)
+        label2.font = UIFont.boldSystemFont(ofSize: 15.0)
         //label.backgroundColor = .red
         label2.textColor = .black
         view1.addSubview(label2)
@@ -198,23 +217,32 @@ class ViewController: UIViewController {
         
         for i in 0...t {
             
-            let label1 = UILabel(frame: CGRect(x: br * 0.15, y: ho * 0.10 + ho * 0.05 * CGFloat(i), width: br * 0.40, height: ho * 0.05))
+            let label0 = UILabel(frame: CGRect(x: br * 0.05, y: ho * 0.05 + ho * 0.05 * CGFloat(i), width: br * 0.10, height: ho * 0.05))
             
-            let label2 = UILabel(frame: CGRect(x: br * 0.65, y: ho * 0.10 + ho * 0.05 * CGFloat(i), width: br * 0.20, height: ho * 0.05))
+            let label1 = UILabel(frame: CGRect(x: br * 0.20, y: ho * 0.05 + ho * 0.05 * CGFloat(i), width: br * 0.40, height: ho * 0.05))
             
-            //Test 2
+            let label2 = UILabel(frame: CGRect(x: br * 0.65, y: ho * 0.05 + ho * 0.05 * CGFloat(i), width: br * 0.20, height: ho * 0.05))
             
+            
+            label0.textAlignment = NSTextAlignment.center
+            //label1.text = PronosB[i][0].user
+            label0.text = String(i + 1)
+            label0.font = UIFont.systemFont(ofSize: 15.0)
+            //label.backgroundColor = .red
+            label0.textColor = .black
+            view1.addSubview(label0)
+  
             label1.textAlignment = NSTextAlignment.left
             //label1.text = PronosB[i][0].user
             label1.text = scores[i].user
-            label1.font.withSize(12)
+            label1.font = UIFont.systemFont(ofSize: 15.0)
             //label.backgroundColor = .red
             label1.textColor = .black
             view1.addSubview(label1)
                                 
             label2.textAlignment = NSTextAlignment.center
             label2.text = String(scores[i].punten)
-            label2.font.withSize(12)
+            label2.font = UIFont.systemFont(ofSize: 15.0)
             //label.backgroundColor = .red
             label2.textColor = .black
             view1.addSubview(label2)

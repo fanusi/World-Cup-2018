@@ -13,6 +13,9 @@
 		AE780E0825DAC9D9006C8EEF /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE780E0525DAC9D9006C8EEF /* UIScrollView+.swift */; };
 		AE780E0925DAC9D9006C8EEF /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE780E0625DAC9D9006C8EEF /* UIView+.swift */; };
 		AE780E0A25DAC9D9006C8EEF /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE780E0725DAC9D9006C8EEF /* UILabel+.swift */; };
+		AE7CA6682609F927003581DD /* Test1.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = AE31C4B22609F87400B41ACB /* Test1.xlsx */; };
+		AE7CA6732609F928003581DD /* Test1.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = AE31C4B22609F87400B41ACB /* Test1.xlsx */; };
+		AE7CA6772609F928003581DD /* Test1.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = AE31C4B22609F87400B41ACB /* Test1.xlsx */; };
 		AEB79A0725DA706900A6CCE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB79A0625DA706900A6CCE0 /* AppDelegate.swift */; };
 		AEB79A0925DA706900A6CCE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB79A0825DA706900A6CCE0 /* SceneDelegate.swift */; };
 		AEB79A0B25DA706900A6CCE0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB79A0A25DA706900A6CCE0 /* ViewController.swift */; };
@@ -24,7 +27,6 @@
 		AEB79A2C25DA706A00A6CCE0 /* Swipetest1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB79A2B25DA706A00A6CCE0 /* Swipetest1UITests.swift */; };
 		AEB79A3D25DA7F5200A6CCE0 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB79A3C25DA7F5200A6CCE0 /* ViewController2.swift */; };
 		AEB79A4525DA883100A6CCE0 /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB79A4425DA883100A6CCE0 /* ViewController3.swift */; };
-		AED44CF525FA4A6900626B02 /* Test1.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = AED44CF425FA4A6900626B02 /* Test1.xlsx */; };
 		B130214EE44EC5CDE5A21522 /* Pods_Swipetest1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D33B61814DDB6B30392DC8 /* Pods_Swipetest1.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +53,7 @@
 		3C2B656EADD14A7152DE33D9 /* Pods-Swipetest1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipetest1.debug.xcconfig"; path = "Target Support Files/Pods-Swipetest1/Pods-Swipetest1.debug.xcconfig"; sourceTree = "<group>"; };
 		4009956CB5DA1D5238085C97 /* Pods_Swipetest1Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swipetest1Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6744F326AAF9474A802FD26 /* Pods-Swipetest1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipetest1Tests.release.xcconfig"; path = "Target Support Files/Pods-Swipetest1Tests/Pods-Swipetest1Tests.release.xcconfig"; sourceTree = "<group>"; };
+		AE31C4B22609F87400B41ACB /* Test1.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Test1.xlsx; sourceTree = SOURCE_ROOT; };
 		AE31D5752604B65600C4CB0F /* Scores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scores.swift; sourceTree = "<group>"; };
 		AE780DFF25DAC82C006C8EEF /* EuroJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EuroJSON.swift; sourceTree = "<group>"; };
 		AE780E0525DAC9D9006C8EEF /* UIScrollView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIScrollView+.swift"; path = "Swipetest1/UIScrollView+.swift"; sourceTree = SOURCE_ROOT; };
@@ -73,7 +76,6 @@
 		AEB79A2D25DA706A00A6CCE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEB79A3C25DA7F5200A6CCE0 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		AEB79A4425DA883100A6CCE0 /* ViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
-		AED44CF425FA4A6900626B02 /* Test1.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Test1.xlsx; sourceTree = "<group>"; };
 		DAEAEF5A1C367DC596DF3F75 /* Pods-Swipetest1Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipetest1Tests.debug.xcconfig"; path = "Target Support Files/Pods-Swipetest1Tests/Pods-Swipetest1Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,8 +158,8 @@
 				AEB79A3C25DA7F5200A6CCE0 /* ViewController2.swift */,
 				AEB79A4425DA883100A6CCE0 /* ViewController3.swift */,
 				AEB79A1225DA706A00A6CCE0 /* Assets.xcassets */,
-				AED44CF425FA4A6900626B02 /* Test1.xlsx */,
 				AEB79A1425DA706A00A6CCE0 /* LaunchScreen.storyboard */,
+				AE31C4B22609F87400B41ACB /* Test1.xlsx */,
 				AEB79A1725DA706A00A6CCE0 /* Info.plist */,
 				AEB79A0F25DA706900A6CCE0 /* Swipetest1.xcdatamodeld */,
 				AE780DFF25DAC82C006C8EEF /* EuroJSON.swift */,
@@ -301,7 +303,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AED44CF525FA4A6900626B02 /* Test1.xlsx in Resources */,
+				AE7CA6682609F927003581DD /* Test1.xlsx in Resources */,
 				AEB79A1625DA706A00A6CCE0 /* LaunchScreen.storyboard in Resources */,
 				AEB79A1325DA706A00A6CCE0 /* Assets.xcassets in Resources */,
 				AEB79A0E25DA706900A6CCE0 /* Main.storyboard in Resources */,
@@ -312,6 +314,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE7CA6772609F928003581DD /* Test1.xlsx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +322,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE7CA6732609F928003581DD /* Test1.xlsx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
