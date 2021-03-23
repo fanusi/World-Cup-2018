@@ -13,6 +13,9 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
     @IBOutlet weak var View2: UIView!
     @IBOutlet weak var pickerView: UIPickerView!
     
+    let u1:Int = 7
+    //Number of subviews on screen
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -163,24 +166,25 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
             
             }
             
-            exampleview.contentSize = CGSize(width: br, height: CGFloat(n + 10) * ho / 8)
+            exampleview.contentSize = CGSize(width: br, height: CGFloat(n + 2) * ho / CGFloat(u1))
             
         }
         
         func createviews (index1: Int, actualview: UIView, superviewer: UIScrollView, numberviews: Int, choice1: Int, team1: String, team2: String) {
                 
                 superviewer.addSubview(actualview)
-                actualview.frame = CGRect(x: 0, y: 0.05 + view.bounds.height / 8 * CGFloat(index1), width: superviewer.bounds.width, height: view.bounds.height / 8)
-                actualview.backgroundColor = UIColor.init(red: CGFloat((7 + index1 * 0)) / 255, green: CGFloat((128 + index1 * 10)) / 255, blue: CGFloat((252 + index1 * 0)) / 255, alpha: 1)
-                
+            actualview.frame = CGRect(x: 0, y: 0.0 + superviewer.bounds.height / CGFloat(u1) * CGFloat(index1), width: superviewer.bounds.width, height: superviewer.bounds.height / CGFloat(u1))
+//                actualview.backgroundColor = UIColor.init(red: CGFloat((7 + index1 * 0)) / 255, green: CGFloat((128 + index1 * 10)) / 255, blue: CGFloat((252 + index1 * 0)) / 255, alpha: 1)
+                actualview.backgroundColor = .white
+            
                 createlabels(type: 1, superviewer: actualview, teller: index1 + 1, choice1: choice1, team1: team1, team2: team2)
                 createlabels(type: 2, superviewer: actualview, teller: index1 + 1, choice1: choice1, team1: team1, team2: team2)
                 createlabels(type: 3, superviewer: actualview, teller: index1 + 1, choice1: choice1, team1: team1, team2: team2)
                 createlabels(type: 4, superviewer: actualview, teller: index1 + 1, choice1: choice1, team1: team1, team2: team2)
                 
-            let label2 = UILabel(frame: CGRect(x: actualview.bounds.width * 0.05, y: 0, width: actualview.bounds.width * 0.5, height: actualview.bounds.height * 0.3))
+            let label2 = UILabel(frame: CGRect(x: actualview.bounds.width * 0.01, y: actualview.bounds.height * 0.4, width: actualview.bounds.width * 0.4, height: actualview.bounds.height * 0.3))
                 label2.text = PronosB[index1][0].user
-                label2.font.withSize(11)
+                label2.font = UIFont.boldSystemFont(ofSize: 14.0)
                 actualview.addSubview(label2)
                 
             }
@@ -192,8 +196,8 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
             let y0 = superviewer.bounds.height
             
             var x1:CGFloat = 0
-            let y1 = y0 * 0.5
-            let h1 = y0 * 0.2
+            var y1:CGFloat = 0
+            let h1 = y0 * 0.3
             var w1:CGFloat = 0
             
             
@@ -209,8 +213,9 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
             
             if type == 1 {
             
-                x1 = 0.05 * x0
-                w1 = 0.30 * x0
+                x1 = 0.35 * x0
+                w1 = 0.40 * x0
+                y1 = 0.30 * y0
                 
                 temp5 = temp1
                 
@@ -218,31 +223,36 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
             
             if type == 2 {
             
-                x1 = 0.40 * x0
+                x1 = 0.80 * x0
                 w1 = 0.10 * x0
+                y1 = 0.30 * y0
+                
                 temp5 = temp2
                 
             }
             
             if type == 3 {
             
-                x1 = 0.50 * x0
+                x1 = 0.80 * x0
                 w1 = 0.10 * x0
+                y1 = 0.60 * y0
+                
                 temp5 = temp3
             }
             
             if type == 4 {
             
-                x1 = 0.65 * x0
-                w1 = 0.30 * x0
+                x1 = 0.35 * x0
+                w1 = 0.40 * x0
+                y1 = 0.60 * y0
                 temp5 = temp4
                 
             }
                 
             let label = UILabel(frame: CGRect(x: x1, y: y1, width: w1, height: h1))
-            label.textAlignment = NSTextAlignment.center
+            label.textAlignment = NSTextAlignment.left
             label.text = temp5
-            label.font.withSize(11)
+            label.font = UIFont.boldSystemFont(ofSize: 14.0)
             superviewer.addSubview(label)
 
             

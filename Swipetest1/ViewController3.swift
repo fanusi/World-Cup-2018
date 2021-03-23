@@ -24,23 +24,35 @@ class ViewController3: UIViewController {
         leftSwipe.direction = UISwipeGestureRecognizer.Direction.left
         self.view.addGestureRecognizer(leftSwipe)
         
-        playedgames()
+        let bar1 = UIView()
+        bar1.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * b1)
+        bar1.backgroundColor = .systemGray5
+        view.addSubview(bar1)
+        
+        let mainview = UIView()
+        mainview.frame = CGRect(x: 0, y: view.frame.height * b1, width: view.frame.width, height: view.frame.height * (1-b1))
+        view.addSubview(mainview)
+        
+        let sview = UIScrollView()
+        sview.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+
+        sview.showsVerticalScrollIndicator = false
+        sview.translatesAutoresizingMaskIntoConstraints = false
+        
+        mainview.addSubview(sview)
+        sview.edgeTo(view: mainview)
+        
+        playedgames(uview: sview)
 
     }
     
-    func playedgames() {
-            
+    func playedgames(uview: UIScrollView) {
+        
             if PronosA.count > 0 {
             
-                let sview = UIScrollView()
-                sview.showsVerticalScrollIndicator = false
-                sview.translatesAutoresizingMaskIntoConstraints = false
-                sview.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-                view.addSubview(sview)
-                sview.edgeTo(view: view)
             
-                let br: CGFloat = sview.bounds.width
-                let ho: CGFloat = sview.bounds.height
+                let br: CGFloat = uview.bounds.width
+                let ho: CGFloat = uview.bounds.height
                 
                 var array = [UIView]()
                 array.removeAll()
@@ -53,11 +65,11 @@ class ViewController3: UIViewController {
                 
                 for i in 0...n-1 {
                     
-                    createviews(index1: i, actualview: array[i], superviewer: sview, numberviews: n)
+                    createviews(index1: i, actualview: array[i], superviewer: uview, numberviews: n)
                 
                 }
                 
-                sview.contentSize = CGSize(width: br, height: CGFloat(n + 10) * ho / CGFloat(size1))
+                uview.contentSize = CGSize(width: br, height: CGFloat(n + 10) * ho / CGFloat(size1))
             
             } else {
                 
@@ -75,7 +87,7 @@ class ViewController3: UIViewController {
                     self.view.subviews.forEach { (item) in
                     item.removeFromSuperview()
                     }
-                    self.playedgames()
+                    self.playedgames(uview: uview)
                 
                 }
                 
