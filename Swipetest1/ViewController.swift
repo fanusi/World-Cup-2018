@@ -51,8 +51,34 @@ class ViewController: UIViewController {
         
         let bar1 = UIView()
         bar1.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * b1)
-        bar1.backgroundColor = .systemGray5
+        //bar1.backgroundColor = .systemGray5
+        bar1.backgroundColor = UIColor.init(red: 0, green: 209/255, blue: 255/255, alpha: 0.75)
         view.addSubview(bar1)
+        
+        let chevronLeft = UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .heavy))
+        let chevronRight = UIImage(systemName: "chevron.right", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .heavy))
+        
+        let title = UILabel(frame: CGRect(x: bar1.frame.width * 0.3, y: bar1.frame.height * 0.5, width: bar1.frame.width * 0.4, height: bar1.frame.height * 0.30))
+        
+        title.text = "Ranking"
+        title.textAlignment = NSTextAlignment.center
+        title.font = UIFont.boldSystemFont(ofSize: 25.0)
+        title.textColor = .black
+        
+        let cleft = UIButton(type: .custom)
+        cleft.frame = CGRect(x: bar1.frame.width * 0.0, y: bar1.frame.height * 0.5, width: bar1.frame.width * 0.15, height: bar1.frame.height * 0.30)
+        let cright = UIButton(type: .custom)
+        cright.frame = CGRect(x: bar1.frame.width * 0.85, y: bar1.frame.height * 0.5, width: bar1.frame.width * 0.15, height: bar1.frame.height * 0.30)
+        
+        cleft.setImage(chevronLeft, for: UIControl.State.normal)
+        cright.setImage(chevronRight, for: UIControl.State.normal)
+        
+        cleft.addTarget(self, action: #selector(arrowleft), for: .touchUpInside)
+        cright.addTarget(self, action: #selector(arrowright), for: .touchUpInside)
+        
+        bar1.addSubview(title)
+        bar1.addSubview(cleft)
+        bar1.addSubview(cright)
         
         let mainview = UIView()
         mainview.frame = CGRect(x: 0, y: view.frame.height * b1, width: view.frame.width, height: view.frame.height * (1-b1))
@@ -500,6 +526,18 @@ extension UIViewController {
             break
         }
         
+    }
+ 
+    @objc func arrowleft() {
+    
+            performSegue(withIdentifier: "goLeft", sender: self)
+
+    }
+    
+    @objc func arrowright() {
+    
+            performSegue(withIdentifier: "goRight", sender: self)
+
     }
     
 }

@@ -36,10 +36,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ajt-i7-l2i" userLabel="Bar1">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="134.5"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dY5-S7-YdJ" userLabel="SView">
                                 <rect key="frame" x="0.0" y="134.5" width="414" height="761.5"/>
                                 <subviews>
@@ -74,6 +70,10 @@
                                     <constraint firstItem="9mz-ie-xi6" firstAttribute="top" secondItem="dY5-S7-YdJ" secondAttribute="top" id="wG2-po-lsA"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ajt-i7-l2i" userLabel="Bar1">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="134.5"/>
+                                <color key="backgroundColor" red="0.0" green="0.81992992912371132" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0rP-in-nlY"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
@@ -91,6 +91,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="cRQ-mS-lZN"/>
                     <connections>
+                        <outlet property="Bar1" destination="ajt-i7-l2i" id="Yym-Mr-zcN"/>
                         <outlet property="View1" destination="9mz-ie-xi6" id="0Fr-4f-6MO"/>
                         <outlet property="View2" destination="FlS-d8-spN" id="Z4m-In-RWI"/>
                         <outlet property="pickerView" destination="2sq-X7-y7E" id="KT5-Fi-tkR"/>
@@ -131,9 +132,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

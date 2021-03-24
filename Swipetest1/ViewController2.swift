@@ -12,17 +12,18 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
     @IBOutlet weak var View1: UIView!
     @IBOutlet weak var View2: UIView!
     @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var Bar1: UIView!
     
     let u1:Int = 7
     //Number of subviews on screen
+    
+    var fg:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
-        
-        var fg:Int = 0
         
         if PronosA.count > 0 {
         
@@ -46,9 +47,6 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
         
         print("fg = " + String(fg))
         
-        self.pickerView.selectRow(fg + 1, inComponent: 0, animated: false)
-        self.pickerView(pickerView, didSelectRow: fg + 1, inComponent: 0)
-        
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction(swipe:)))
         rightSwipe.direction = UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(rightSwipe)
@@ -57,6 +55,50 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
         leftSwipe.direction = UISwipeGestureRecognizer.Direction.left
         self.view.addGestureRecognizer(leftSwipe)
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        self.pickerView.selectRow(fg + 1, inComponent: 0, animated: false)
+        self.pickerView(pickerView, didSelectRow: fg + 1, inComponent: 0)
+
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        barcontent()
+    }
+    
+    
+    func barcontent() {
+        
+        let chevronLeft = UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .heavy))
+        let chevronRight = UIImage(systemName: "chevron.right", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .heavy))
+        
+        let title = UILabel(frame: CGRect(x: Bar1.frame.width * 0.3, y: Bar1.frame.height * 0.5, width: Bar1.frame.width * 0.4, height: Bar1.frame.height * 0.30))
+        
+        title.text = "Pronos"
+        title.textAlignment = NSTextAlignment.center
+        title.font = UIFont.boldSystemFont(ofSize: 25.0)
+        title.textColor = .black
+        
+        let cleft = UIButton(type: .custom)
+        cleft.frame = CGRect(x: Bar1.frame.width * 0.0, y: Bar1.frame.height * 0.5, width: Bar1.frame.width * 0.15, height: Bar1.frame.height * 0.30)
+        let cright = UIButton(type: .custom)
+        cright.frame = CGRect(x: Bar1.frame.width * 0.85, y: Bar1.frame.height * 0.5, width: Bar1.frame.width * 0.15, height: Bar1.frame.height * 0.30)
+        
+        cleft.setImage(chevronLeft, for: UIControl.State.normal)
+        cright.setImage(chevronRight, for: UIControl.State.normal)
+        
+        cleft.addTarget(self, action: #selector(arrowleft), for: .touchUpInside)
+        cright.addTarget(self, action: #selector(arrowright), for: .touchUpInside)
+        
+        Bar1.addSubview(title)
+        Bar1.addSubview(cleft)
+        Bar1.addSubview(cright)
+        
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
