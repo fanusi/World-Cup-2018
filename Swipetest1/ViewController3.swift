@@ -94,7 +94,7 @@ class ViewController3: UIViewController {
                 
                 }
                 
-                uview.contentSize = CGSize(width: br, height: CGFloat(n + 10) * ho / CGFloat(size1))
+                uview.contentSize = CGSize(width: br, height: CGFloat(n + 1) * ho / CGFloat(size1))
             
             } else {
                 

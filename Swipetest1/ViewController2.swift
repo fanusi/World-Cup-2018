@@ -68,6 +68,8 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        //self.pickerView.selectRow(fg + 1, inComponent: 0, animated: false)
+        //self.pickerView(pickerView, didSelectRow: fg + 1, inComponent: 0)
         barcontent()
     }
     
@@ -143,11 +145,10 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
+        removeSV(viewsv: View1)
+        //Remove subviews
+        
         if row == 0 {
-            
-            View1.subviews.forEach { (item) in
-                item.removeFromSuperview()
-            }
             
             let sview = UIScrollView()
             sview.showsVerticalScrollIndicator = false
@@ -183,7 +184,7 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
             
             let exampleview = UIScrollView()
             
-            exampleview.backgroundColor = .black
+            //exampleview.backgroundColor = .black
             exampleview.translatesAutoresizingMaskIntoConstraints = false
             viewP.addSubview(exampleview)
             
@@ -208,7 +209,7 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
             
             }
             
-            exampleview.contentSize = CGSize(width: br, height: CGFloat(n + 2) * ho / CGFloat(u1))
+            exampleview.contentSize = CGSize(width: br, height: CGFloat(n + 1) * ho / CGFloat(u1))
             
         }
         
@@ -299,7 +300,13 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
 
             
         }
-        
     
+    func removeSV (viewsv: UIView) {
+     
+        viewsv.subviews.forEach { (item) in
+        item.removeFromSuperview()
+        }
+        
+    }
 
 }
