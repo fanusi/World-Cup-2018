@@ -103,7 +103,7 @@ struct FT: Codable {
         if var fulltime =  try values.decodeIfPresent(String.self, forKey: .fulltime) {
             self.fulltime = fulltime
         } else {
-            self.fulltime = "NA"
+            self.fulltime = "-"
         }
         
     }

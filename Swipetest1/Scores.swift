@@ -11,11 +11,14 @@ class Scores {
     
     var user: String
     var punten: Int
+    var index: Int
+    var ranking: Int = 0
     
-    init(user: String, punten: Int) {
+    init(user: String, punten: Int, index: Int) {
         
         self.user = user
         self.punten = punten
+        self.index = index
         
     }
     

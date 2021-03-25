@@ -378,14 +378,24 @@ class ViewController: UIViewController {
             
             calculator(speler: PronosB[i])
             
-            let newscore = Scores(user: (PronosB[i].first?.user)! , punten: puntenSommatie(z: 19, speler: PronosB[i]))
-            
+            let newscore = Scores(user: (PronosB[i].first?.user)! , punten: puntenSommatie(z: 19, speler: PronosB[i]), index: i)
+
             scores.append(newscore)
             
         }
         
         scores = scores.sorted(by: { ($0.punten) > ($1.punten) })
         //PronosB = PronosB.sorted(by: { ($0.last?.statistiek!.punten)! > ($1.last?.statistiek!.punten)! })
+        
+        for i in 0...t {
+            
+            scores[i].ranking = i
+            print(scores[i].ranking)
+            print(scores[i].index)
+            
+        }
+        
+        
     }
     
     func realpronos () {

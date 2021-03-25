@@ -197,12 +197,13 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
             var array = [UIView]()
             array.removeAll()
             
-            let n = PronosB.count
+            
+            let n = scores.count
             
             for _ in 0 ..< n {
                 array.append(UIView())
             }
-            
+        
             for i in 0...n-1 {
                 
                 createviews(index1: i, actualview: array[i], superviewer: exampleview, numberviews: n, choice1: choice1, team1: team1, team2: team2)
@@ -215,18 +216,20 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
         
         func createviews (index1: Int, actualview: UIView, superviewer: UIScrollView, numberviews: Int, choice1: Int, team1: String, team2: String) {
                 
+                let gebr: Int = scores[index1].index
+            
                 superviewer.addSubview(actualview)
-            actualview.frame = CGRect(x: 0, y: 0.0 + superviewer.bounds.height / CGFloat(u1) * CGFloat(index1), width: superviewer.bounds.width, height: superviewer.bounds.height / CGFloat(u1))
-//                actualview.backgroundColor = UIColor.init(red: CGFloat((7 + index1 * 0)) / 255, green: CGFloat((128 + index1 * 10)) / 255, blue: CGFloat((252 + index1 * 0)) / 255, alpha: 1)
+                actualview.frame = CGRect(x: 0, y: 0.0 + superviewer.bounds.height / CGFloat(u1) * CGFloat(index1), width: superviewer.bounds.width, height: superviewer.bounds.height / CGFloat(u1))
+
                 actualview.backgroundColor = .white
             
-                createlabels(type: 1, superviewer: actualview, teller: index1 + 1, choice1: choice1, team1: team1, team2: team2)
-                createlabels(type: 2, superviewer: actualview, teller: index1 + 1, choice1: choice1, team1: team1, team2: team2)
-                createlabels(type: 3, superviewer: actualview, teller: index1 + 1, choice1: choice1, team1: team1, team2: team2)
-                createlabels(type: 4, superviewer: actualview, teller: index1 + 1, choice1: choice1, team1: team1, team2: team2)
+                createlabels(type: 1, superviewer: actualview, teller: index1, choice1: choice1, team1: team1, team2: team2)
+                createlabels(type: 2, superviewer: actualview, teller: index1, choice1: choice1, team1: team1, team2: team2)
+                createlabels(type: 3, superviewer: actualview, teller: index1, choice1: choice1, team1: team1, team2: team2)
+                createlabels(type: 4, superviewer: actualview, teller: index1, choice1: choice1, team1: team1, team2: team2)
                 
             let label2 = UILabel(frame: CGRect(x: actualview.bounds.width * 0.01, y: actualview.bounds.height * 0.4, width: actualview.bounds.width * 0.4, height: actualview.bounds.height * 0.3))
-                label2.text = PronosB[index1][0].user
+                label2.text = PronosB[gebr][0].user
                 label2.font = UIFont.boldSystemFont(ofSize: 14.0)
                 actualview.addSubview(label2)
                 
@@ -234,6 +237,8 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
 
         
         func createlabels (type: Int, superviewer: UIView, teller: Int, choice1: Int, team1: String, team2: String ) {
+            
+            let gebr: Int = scores[teller].index
             
             let x0 = superviewer.bounds.width
             let y0 = superviewer.bounds.height
@@ -250,8 +255,8 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
             let temp4:String = team2
             var temp5:String = ""
             
-            temp2 = String(PronosB[teller-1][choice1].home_Goals)
-            temp3 = String(PronosB[teller-1][choice1].away_Goals)
+            temp2 = String(PronosB[gebr][choice1].home_Goals)
+            temp3 = String(PronosB[gebr][choice1].away_Goals)
             
             
             if type == 1 {
