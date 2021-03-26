@@ -293,70 +293,82 @@ class ViewController: UIViewController {
         
     }
     
+    func calc_simple (hg_p: Int, ag_p: Int, hg_r: Int, ag_r: Int) -> Int {
+        
+        var punten: Int = 0
+        
+        if hg_r >= 0 {
+        
+            if hg_r > ag_r && hg_p > ag_p {
+                
+                punten = punten + 1
+                
+                if hg_r == hg_p {
+                    
+                    punten = punten + 1
+                    
+                }
+                
+                if ag_r == ag_p {
+                    
+                    punten = punten + 1
+                    
+                }
+                
+            }
+
+            if hg_r < ag_r && hg_p < ag_p {
+                
+                punten = punten + 1
+                
+                if hg_r == hg_p {
+                    
+                    punten = punten + 1
+                    
+                }
+                
+                if ag_r == ag_p {
+                    
+                    punten = punten + 1
+                    
+                }
+                     
+            }
+
+            if hg_r == ag_r && hg_p == ag_p {
+                
+                punten = punten + 1
+                
+                if hg_r == hg_p {
+                    
+                    punten = punten + 2
+                    
+                }
+                     
+            }
+        
+        }
+        
+        return punten
+        
+        
+    }
+    
     func calculator (speler: [Pronostiek]) {
         
-        let g:Int = 19
-        // Number of games g+1
-        
-        var punten:Int = 0
-        
-        for j in 0...g {
+    
+        for j in 0...ga-1 {
             
             //reset punten voor elke match
-            punten = 0
+            var punten:Int = 0
             
-            //If game was not yet played, score is -999
-            if PronosA[j].home_Goals >= 0 {
-            
-                if PronosA[j].home_Goals > PronosA[j].away_Goals && speler[j].home_Goals > speler[j].away_Goals {
-                    
-                    punten = punten + 1
-                    
-                    if PronosA[j].home_Goals == speler[j].home_Goals {
-                        
-                        punten = punten + 1
-                        
-                    }
-                    
-                    if PronosA[j].away_Goals == speler[j].away_Goals {
-                        
-                        punten = punten + 1
-                        
-                    }
-                    
-                }
-
-                if PronosA[j].home_Goals < PronosA[j].away_Goals && speler[j].home_Goals < speler[j].away_Goals {
-                    
-                    punten = punten + 1
-                    
-                    if PronosA[j].home_Goals == speler[j].home_Goals {
-                        
-                        punten = punten + 1
-                        
-                    }
-                    
-                    if PronosA[j].away_Goals == speler[j].away_Goals {
-                        
-                        punten = punten + 1
-                        
-                    }
-                         
-                }
-
-                if PronosA[j].home_Goals == PronosA[j].away_Goals && speler[j].home_Goals == speler[j].away_Goals {
-                    
-                    punten = punten + 1
-                    
-                    if PronosA[j].home_Goals == speler[j].home_Goals {
-                        
-                        punten = punten + 2
-                        
-                    }
-                         
-                }
-            
-            }
+            let homegoals_real: Int = Int(PronosA[j].home_Goals)
+            let awaygoals_real: Int = Int(PronosA[j].away_Goals)
+            let homegoals_prono: Int = Int(speler[j].home_Goals)
+            let awaygoals_prono: Int = Int(speler[j].away_Goals)
+    
+            punten = punten + calc_simple(hg_p: homegoals_prono, ag_p: awaygoals_prono, hg_r: homegoals_real, ag_r: awaygoals_real)
+    
             
             //toewijzen van punten
             let stat = Statistiek(context: context)
@@ -377,7 +389,7 @@ class ViewController: UIViewController {
             
             calculator(speler: PronosB[i])
             
-            let newscore = Scores(user: (PronosB[i].first?.user)! , punten: puntenSommatie(z: 19, speler: PronosB[i]), index: i)
+            let newscore = Scores(user: (PronosB[i].first?.user)! , punten: puntenSommatie(z: ga-1, speler: PronosB[i]), index: i)
 
             scores.append(newscore)
             
