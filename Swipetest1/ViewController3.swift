@@ -26,7 +26,9 @@ class ViewController3: UIViewController {
         
         let bar1 = UIView()
         bar1.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * b1)
-        bar1.backgroundColor = UIColor.init(red: 0, green: 209/255, blue: 255/255, alpha: 0.75)
+        
+        bar1.backgroundColor = .systemRed
+        //bar1.backgroundColor = UIColor.init(red: 0, green: 209/255, blue: 255/255, alpha: 0.75)
         view.addSubview(bar1)
         
         let chevronLeft = UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .heavy))
@@ -37,7 +39,7 @@ class ViewController3: UIViewController {
         title.text = "Uitslagen"
         title.textAlignment = NSTextAlignment.center
         title.font = UIFont.boldSystemFont(ofSize: 25.0)
-        title.textColor = .black
+        title.textColor = .white
         
         let cleft = UIButton(type: .custom)
         cleft.frame = CGRect(x: bar1.frame.width * 0.0, y: bar1.frame.height * 0.5, width: bar1.frame.width * 0.15, height: bar1.frame.height * 0.30)
@@ -46,6 +48,9 @@ class ViewController3: UIViewController {
         
         cleft.setImage(chevronLeft, for: UIControl.State.normal)
         cright.setImage(chevronRight, for: UIControl.State.normal)
+        
+        cleft.tintColor = .white
+        cright.tintColor = .white
         
         cleft.addTarget(self, action: #selector(arrowleft), for: .touchUpInside)
         cright.addTarget(self, action: #selector(arrowright), for: .touchUpInside)

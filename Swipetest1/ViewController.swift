@@ -17,6 +17,9 @@ public var PronosB = [[Pronostiek]]()
 public let b1:CGFloat = 0.15
 // Height of upper bar
 
+public let ga:Int = 64
+//Number of matches
+
 var scores = [Scores]()
 // Users and their scores
 
@@ -24,6 +27,9 @@ class ViewController: UIViewController {
     
     //var PronosB = [[Pronostiek]]()
     // PronosB contains guesses of all players
+    
+    let pr:Int = 43
+    //Number of players
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
@@ -51,8 +57,8 @@ class ViewController: UIViewController {
         
         let bar1 = UIView()
         bar1.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * b1)
-        //bar1.backgroundColor = .systemGray5
-        bar1.backgroundColor = UIColor.init(red: 0, green: 209/255, blue: 255/255, alpha: 0.75)
+        bar1.backgroundColor = .systemRed
+        //bar1.backgroundColor = UIColor.init(red: 0, green: 209/255, blue: 255/255, alpha: 0.75)
         view.addSubview(bar1)
         
         let chevronLeft = UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .heavy))
@@ -63,7 +69,7 @@ class ViewController: UIViewController {
         title.text = "Ranking"
         title.textAlignment = NSTextAlignment.center
         title.font = UIFont.boldSystemFont(ofSize: 25.0)
-        title.textColor = .black
+        title.textColor = .white
         
         let cleft = UIButton(type: .custom)
         cleft.frame = CGRect(x: bar1.frame.width * 0.0, y: bar1.frame.height * 0.5, width: bar1.frame.width * 0.15, height: bar1.frame.height * 0.30)
@@ -72,6 +78,9 @@ class ViewController: UIViewController {
         
         cleft.setImage(chevronLeft, for: UIControl.State.normal)
         cright.setImage(chevronRight, for: UIControl.State.normal)
+        
+        cleft.tintColor = .white
+        cright.tintColor = .white
         
         cleft.addTarget(self, action: #selector(arrowleft), for: .touchUpInside)
         cright.addTarget(self, action: #selector(arrowright), for: .touchUpInside)
@@ -105,7 +114,7 @@ class ViewController: UIViewController {
                 ]
 
                 //403
-                let request = NSMutableURLRequest(url: NSURL(string: "https://api-football-v1.p.rapidapi.com/v2/fixtures/league/2660?timezone=Europe%2FLondon")! as URL,
+                let request = NSMutableURLRequest(url: NSURL(string: "https://api-football-v1.p.rapidapi.com/v2/fixtures/league/1?timezone=Europe%2FLondon")! as URL,
                                                     cachePolicy: .useProtocolCachePolicy,
                                                 timeoutInterval: 10.0)
                 request.httpMethod = "GET"
@@ -123,15 +132,13 @@ class ViewController: UIViewController {
                         
                 do {
                             
-                    
-                        let g = 305
-                        //g = 297
-                        let start = 271
-                        // start = 261
+                        let start = 0
+                        let end = 63
+
                         let niveau1 = try decoder.decode(api1.self, from: data!)
                         //print(niveau1)
                         
-                        for n in start...g {
+                        for n in start...end {
 
                             //print(niveau1.api.fixtures[n].fixture_id)
                             let newFixture = Pronostiek(context: self.context)
@@ -205,12 +212,7 @@ class ViewController: UIViewController {
     
     
     func createlabels(view1: UIScrollView) {
-        
-        let t:Int = 20
-        // Create t+1 test pronos
-        
-        let g:Int = 19
-        // Number of games
+    
         
         let br = view1.bounds.width
         let ho = view1.bounds.height
@@ -241,7 +243,7 @@ class ViewController: UIViewController {
         view1.addSubview(label2)
         
         
-        for i in 0...t {
+        for i in 0...pr-1 {
             
             let label0 = UILabel(frame: CGRect(x: br * 0.05, y: ho * 0.05 + ho * 0.05 * CGFloat(i), width: br * 0.10, height: ho * 0.05))
             
@@ -368,13 +370,10 @@ class ViewController: UIViewController {
     }
     
     func routine () {
-        
-        let t:Int = 20
-        // t+1 pronos
-        
+               
         scores.removeAll()
         
-        for i in 0...t {
+        for i in 0...pr-1 {
             
             calculator(speler: PronosB[i])
             
@@ -387,7 +386,7 @@ class ViewController: UIViewController {
         scores = scores.sorted(by: { ($0.punten) > ($1.punten) })
         //PronosB = PronosB.sorted(by: { ($0.last?.statistiek!.punten)! > ($1.last?.statistiek!.punten)! })
         
-        for i in 0...t {
+        for i in 0...pr-1 {
             
             scores[i].ranking = i
             print(scores[i].ranking)
@@ -401,8 +400,10 @@ class ViewController: UIViewController {
     func realpronos () {
         
         var gebruikers: [String] = []
+        var homeTeams: [String] = []
+        var awayTeams: [String] = []
         
-        guard let filepath = Bundle.main.path(forResource: "Test1", ofType: "xlsx") else {
+        guard let filepath = Bundle.main.path(forResource: "WK 18", ofType: "xlsx") else {
 
             fatalError("Error n1")
         }
@@ -420,10 +421,26 @@ class ViewController: UIViewController {
             let worksheet = try! file.parseWorksheet(at: path)
                 
             if let sharedStrings = try! file.parseSharedStrings() {
-              let columnCStrings = worksheet.cells(atColumns: [ColumnReference("A")!])
+              let columnAStrings = worksheet.cells(atColumns: [ColumnReference("A")!])
                 .compactMap { $0.stringValue(sharedStrings) }
             
-                gebruikers = columnCStrings
+                gebruikers = columnAStrings
+    
+            }
+                
+            if let sharedStrings = try! file.parseSharedStrings() {
+              let columnCStrings = worksheet.cells(atColumns: [ColumnReference("C")!])
+                .compactMap { $0.stringValue(sharedStrings) }
+            
+                homeTeams = columnCStrings
+    
+            }
+            
+            if let sharedStrings = try! file.parseSharedStrings() {
+              let columnDStrings = worksheet.cells(atColumns: [ColumnReference("D")!])
+                .compactMap { $0.stringValue(sharedStrings) }
+            
+                awayTeams = columnDStrings
     
             }
             
@@ -431,39 +448,33 @@ class ViewController: UIViewController {
             print(gebruikers[1])
             
             PronosB.removeAll()
-                
-            let t:Int = 20
-            // Create t+1 test pronos
-                
-            let g:Int = 20
-            // Number of games
                     
-            for i in 0...t {
+            for i in 0...pr-1 {
                 
                 // Loop players
                 
                 let newArrayFixtures = [Pronostiek(context: self.context)]
                 PronosB.append(newArrayFixtures)
                 
-                PronosB[i][0].user = gebruikers[1 + g*i]
+                PronosB[i][0].user = gebruikers[1 + ga*i]
                 PronosB[i][0].fixture_ID = PronosA[0].fixture_ID
                 PronosB[i][0].round = PronosA[0].round
-                PronosB[i][0].home_Goals = Int16((worksheet.data?.rows[1 + g*i].cells[4].value)!)!
-                PronosB[i][0].away_Goals = Int16((worksheet.data?.rows[1 + g*i].cells[5].value)!)!
-                PronosB[i][0].home_Team = PronosA[0].home_Team
-                PronosB[i][0].away_Team = PronosA[0].away_Team
+                PronosB[i][0].home_Goals = Int16((worksheet.data?.rows[1 + ga*i].cells[4].value)!)!
+                PronosB[i][0].away_Goals = Int16((worksheet.data?.rows[1 + ga*i].cells[5].value)!)!
+                PronosB[i][0].home_Team = homeTeams[1 + ga*i]
+                PronosB[i][0].away_Team = awayTeams[1 + ga*i]
                 
-                for n in 1...(g-1) {
+                for n in 1...ga-1 {
                     
                     // Loop games
                     let newFixture = Pronostiek(context: self.context)
-                    newFixture.user = gebruikers[(n+1) + g*i]
+                    newFixture.user = gebruikers[(n+1) + ga*i]
                     newFixture.fixture_ID = PronosA[n].fixture_ID
                     newFixture.round = PronosA[n].round
-                    newFixture.home_Goals = Int16((worksheet.data?.rows[(n+1) + g*i].cells[4].value)!)!
-                    newFixture.away_Goals = Int16((worksheet.data?.rows[(n+1) + g*i].cells[5].value)!)!
-                    newFixture.home_Team = PronosA[n].home_Team
-                    newFixture.away_Team = PronosA[n].away_Team
+                    newFixture.home_Goals = Int16((worksheet.data?.rows[(n+1) + ga*i].cells[4].value)!)!
+                    newFixture.away_Goals = Int16((worksheet.data?.rows[(n+1) + ga*i].cells[5].value)!)!
+                    newFixture.home_Team = homeTeams[(n+1) + ga*i]
+                    newFixture.away_Team = awayTeams[(n+1) + ga*i]
                     PronosB[i].append(newFixture)
                     
                 }

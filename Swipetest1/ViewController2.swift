@@ -59,9 +59,11 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        let x:Int = min(fg + 1, ga)
 
-        self.pickerView.selectRow(fg + 1, inComponent: 0, animated: false)
-        self.pickerView(pickerView, didSelectRow: fg + 1, inComponent: 0)
+        self.pickerView.selectRow(x, inComponent: 0, animated: false)
+        self.pickerView(pickerView, didSelectRow: x, inComponent: 0)
 
     }
     
@@ -84,7 +86,8 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
         title.text = "Pronos"
         title.textAlignment = NSTextAlignment.center
         title.font = UIFont.boldSystemFont(ofSize: 25.0)
-        title.textColor = .black
+        title.textColor = .white
+        //title.textColor = .black
         
         let cleft = UIButton(type: .custom)
         cleft.frame = CGRect(x: Bar1.frame.width * 0.0, y: Bar1.frame.height * 0.5, width: Bar1.frame.width * 0.15, height: Bar1.frame.height * 0.30)
@@ -93,6 +96,9 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
         
         cleft.setImage(chevronLeft, for: UIControl.State.normal)
         cright.setImage(chevronRight, for: UIControl.State.normal)
+        
+        cleft.tintColor = .white
+        cright.tintColor = .white
         
         cleft.addTarget(self, action: #selector(arrowleft), for: .touchUpInside)
         cright.addTarget(self, action: #selector(arrowright), for: .touchUpInside)
@@ -113,7 +119,7 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
         
         if PronosB.count > 0 {
         
-            teller = PronosB.count
+            teller = ga + 1
         
         }
         
@@ -133,7 +139,7 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
                 
             } else {
                 
-                game = PronosB[0][row-1].home_Team! + " - " + PronosB[0][row-1].away_Team!
+                game = PronosA[row-1].home_Team! + " - " + PronosA[row-1].away_Team!
                 
             }
     
@@ -228,9 +234,12 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
                 createlabels(type: 3, superviewer: actualview, teller: index1, choice1: choice1, team1: team1, team2: team2)
                 createlabels(type: 4, superviewer: actualview, teller: index1, choice1: choice1, team1: team1, team2: team2)
                 
-            let label2 = UILabel(frame: CGRect(x: actualview.bounds.width * 0.01, y: actualview.bounds.height * 0.4, width: actualview.bounds.width * 0.4, height: actualview.bounds.height * 0.3))
+            let label2 = UILabel(frame: CGRect(x: actualview.bounds.width * 0.01, y: actualview.bounds.height * 0.4, width: actualview.bounds.width * 0.3, height: actualview.bounds.height * 0.3))
                 label2.text = PronosB[gebr][0].user
                 label2.font = UIFont.boldSystemFont(ofSize: 14.0)
+                label2.lineBreakMode = .byClipping
+                label2.adjustsFontSizeToFitWidth = true
+                label2.minimumScaleFactor = 0.5
                 actualview.addSubview(label2)
                 
             }
@@ -249,10 +258,10 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
             var w1:CGFloat = 0
             
             
-            let temp1:String = team1
+            let temp1:String = PronosB[gebr][choice1].home_Team!
             var temp2:String = ""
             var temp3:String = ""
-            let temp4:String = team2
+            let temp4:String = PronosB[gebr][choice1].away_Team!
             var temp5:String = ""
             
             temp2 = String(PronosB[gebr][choice1].home_Goals)

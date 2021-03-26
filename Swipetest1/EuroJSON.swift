@@ -81,10 +81,48 @@ struct api1: Codable {
 
 struct AT: Codable {
     var team_name: String
+    
+    enum CodingKeys: String, CodingKey {
+           case team_name
+       }
+    
+    init(from decoder: Decoder) throws {
+        // 1 - Container
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        
+        // 3 - Conditional Decoding
+        if var team_name =  try values.decodeIfPresent(String.self, forKey: .team_name) {
+            self.team_name = team_name
+        } else {
+            self.team_name = "-"
+        }
+        
+    }
+    
 }
 
 struct HT: Codable {
     var team_name: String
+    
+    enum CodingKeys: String, CodingKey {
+           case team_name
+       }
+    
+    init(from decoder: Decoder) throws {
+        // 1 - Container
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        
+        // 3 - Conditional Decoding
+        if var team_name =  try values.decodeIfPresent(String.self, forKey: .team_name) {
+            self.team_name = team_name
+        } else {
+            self.team_name = "-"
+        }
+        
+    }
+    
 }
 
 struct FT: Codable {
