@@ -2,22 +2,21 @@
 platform :ios, '12.4'
 use_frameworks!
 
-target 'Swipetest1' do
+target 'World Cup 2018' do
   # Comment the next line if you don't want to use dynamic frameworks
   
 
-  # Pods for Swipetest1
-  
+  # Pods for World Cup 2018
+
   pod 'CoreXLSX', '~> 0.14.0'
 
-
-  target 'Swipetest1Tests' do
+  target 'World Cup 2018Tests' do
     inherit! :search_paths
     # Pods for testing
   end
 
-  #target 'Swipetest1UITests' do
+  target 'World Cup 2018UITests' do
     # Pods for testing
-  #end
+  end
 
 end

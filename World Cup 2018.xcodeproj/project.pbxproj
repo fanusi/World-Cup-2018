@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		551347F50D46D121C7253B58 /* Pods_Swipetest1Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4009956CB5DA1D5238085C97 /* Pods_Swipetest1Tests.framework */; };
+		14D36AB4C6D875C278D20DF7 /* Pods_World_Cup_2018_World_Cup_2018UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8575D2F0401FF3767728131D /* Pods_World_Cup_2018_World_Cup_2018UITests.framework */; };
+		7552E6BAA08C6C452448EE1F /* Pods_World_Cup_2018Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D151E6F4462E23D6ABCD1120 /* Pods_World_Cup_2018Tests.framework */; };
 		AE31D5762604B65600C4CB0F /* Scores.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE31D5752604B65600C4CB0F /* Scores.swift */; };
 		AE780E0025DAC82C006C8EEF /* EuroJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE780DFF25DAC82C006C8EEF /* EuroJSON.swift */; };
 		AE780E0825DAC9D9006C8EEF /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE780E0525DAC9D9006C8EEF /* UIScrollView+.swift */; };
@@ -27,7 +28,7 @@
 		AEB79A2C25DA706A00A6CCE0 /* Swipetest1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB79A2B25DA706A00A6CCE0 /* Swipetest1UITests.swift */; };
 		AEB79A3D25DA7F5200A6CCE0 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB79A3C25DA7F5200A6CCE0 /* ViewController2.swift */; };
 		AEB79A4525DA883100A6CCE0 /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB79A4425DA883100A6CCE0 /* ViewController3.swift */; };
-		B130214EE44EC5CDE5A21522 /* Pods_Swipetest1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D33B61814DDB6B30392DC8 /* Pods_Swipetest1.framework */; };
+		E40C5C9B2527CE5AD46812F4 /* Pods_World_Cup_2018.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ED2B115661812B835D7B329 /* Pods_World_Cup_2018.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,10 +49,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		11D33B61814DDB6B30392DC8 /* Pods_Swipetest1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swipetest1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		232A2358E40ADE34229B219E /* Pods-World Cup 2018Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-World Cup 2018Tests.release.xcconfig"; path = "Target Support Files/Pods-World Cup 2018Tests/Pods-World Cup 2018Tests.release.xcconfig"; sourceTree = "<group>"; };
 		36F762EAC0E5B6205BF6A42A /* Pods-Swipetest1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipetest1.release.xcconfig"; path = "Target Support Files/Pods-Swipetest1/Pods-Swipetest1.release.xcconfig"; sourceTree = "<group>"; };
 		3C2B656EADD14A7152DE33D9 /* Pods-Swipetest1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipetest1.debug.xcconfig"; path = "Target Support Files/Pods-Swipetest1/Pods-Swipetest1.debug.xcconfig"; sourceTree = "<group>"; };
-		4009956CB5DA1D5238085C97 /* Pods_Swipetest1Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swipetest1Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5ED2B115661812B835D7B329 /* Pods_World_Cup_2018.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_World_Cup_2018.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C8ADD1D1C2802DDC3BC1388 /* Pods-World Cup 2018Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-World Cup 2018Tests.debug.xcconfig"; path = "Target Support Files/Pods-World Cup 2018Tests/Pods-World Cup 2018Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		81BAD061537C5CA92106A429 /* Pods-World Cup 2018.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-World Cup 2018.release.xcconfig"; path = "Target Support Files/Pods-World Cup 2018/Pods-World Cup 2018.release.xcconfig"; sourceTree = "<group>"; };
+		8575D2F0401FF3767728131D /* Pods_World_Cup_2018_World_Cup_2018UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_World_Cup_2018_World_Cup_2018UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C572209B91F4D53E7DE5B3F /* Pods-World Cup 2018.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-World Cup 2018.debug.xcconfig"; path = "Target Support Files/Pods-World Cup 2018/Pods-World Cup 2018.debug.xcconfig"; sourceTree = "<group>"; };
 		A6744F326AAF9474A802FD26 /* Pods-Swipetest1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipetest1Tests.release.xcconfig"; path = "Target Support Files/Pods-Swipetest1Tests/Pods-Swipetest1Tests.release.xcconfig"; sourceTree = "<group>"; };
 		AE31C4B22609F87400B41ACB /* Test1.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Test1.xlsx; sourceTree = SOURCE_ROOT; };
 		AE31D5752604B65600C4CB0F /* Scores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scores.swift; sourceTree = "<group>"; };
@@ -59,7 +64,7 @@
 		AE780E0525DAC9D9006C8EEF /* UIScrollView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIScrollView+.swift"; path = "Swipetest1/UIScrollView+.swift"; sourceTree = SOURCE_ROOT; };
 		AE780E0625DAC9D9006C8EEF /* UIView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+.swift"; path = "Swipetest1/UIView+.swift"; sourceTree = SOURCE_ROOT; };
 		AE780E0725DAC9D9006C8EEF /* UILabel+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UILabel+.swift"; path = "Swipetest1/UILabel+.swift"; sourceTree = SOURCE_ROOT; };
-		AEB79A0325DA706900A6CCE0 /* Swipetest1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swipetest1.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEB79A0325DA706900A6CCE0 /* World Cup 2018.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "World Cup 2018.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEB79A0625DA706900A6CCE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEB79A0825DA706900A6CCE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AEB79A0A25DA706900A6CCE0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,15 +73,18 @@
 		AEB79A1225DA706A00A6CCE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AEB79A1525DA706A00A6CCE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AEB79A1725DA706A00A6CCE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AEB79A1C25DA706A00A6CCE0 /* Swipetest1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Swipetest1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEB79A1C25DA706A00A6CCE0 /* World Cup 2018Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "World Cup 2018Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEB79A2025DA706A00A6CCE0 /* Swipetest1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swipetest1Tests.swift; sourceTree = "<group>"; };
 		AEB79A2225DA706A00A6CCE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AEB79A2725DA706A00A6CCE0 /* Swipetest1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Swipetest1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEB79A2725DA706A00A6CCE0 /* World Cup 2018UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "World Cup 2018UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEB79A2B25DA706A00A6CCE0 /* Swipetest1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swipetest1UITests.swift; sourceTree = "<group>"; };
 		AEB79A2D25DA706A00A6CCE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEB79A3C25DA7F5200A6CCE0 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		AEB79A4425DA883100A6CCE0 /* ViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
+		BBBA6A89D368ED2F2EE3AF7A /* Pods-World Cup 2018-World Cup 2018UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-World Cup 2018-World Cup 2018UITests.debug.xcconfig"; path = "Target Support Files/Pods-World Cup 2018-World Cup 2018UITests/Pods-World Cup 2018-World Cup 2018UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D151E6F4462E23D6ABCD1120 /* Pods_World_Cup_2018Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_World_Cup_2018Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAEAEF5A1C367DC596DF3F75 /* Pods-Swipetest1Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipetest1Tests.debug.xcconfig"; path = "Target Support Files/Pods-Swipetest1Tests/Pods-Swipetest1Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		F9BD0D6F5CC90BECB5EAD9C4 /* Pods-World Cup 2018-World Cup 2018UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-World Cup 2018-World Cup 2018UITests.release.xcconfig"; path = "Target Support Files/Pods-World Cup 2018-World Cup 2018UITests/Pods-World Cup 2018-World Cup 2018UITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B130214EE44EC5CDE5A21522 /* Pods_Swipetest1.framework in Frameworks */,
+				E40C5C9B2527CE5AD46812F4 /* Pods_World_Cup_2018.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				551347F50D46D121C7253B58 /* Pods_Swipetest1Tests.framework in Frameworks */,
+				7552E6BAA08C6C452448EE1F /* Pods_World_Cup_2018Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14D36AB4C6D875C278D20DF7 /* Pods_World_Cup_2018_World_Cup_2018UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,8 +118,9 @@
 		312E176F9FDAA724560927AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				11D33B61814DDB6B30392DC8 /* Pods_Swipetest1.framework */,
-				4009956CB5DA1D5238085C97 /* Pods_Swipetest1Tests.framework */,
+				5ED2B115661812B835D7B329 /* Pods_World_Cup_2018.framework */,
+				8575D2F0401FF3767728131D /* Pods_World_Cup_2018_World_Cup_2018UITests.framework */,
+				D151E6F4462E23D6ABCD1120 /* Pods_World_Cup_2018Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -140,9 +150,9 @@
 		AEB79A0425DA706900A6CCE0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AEB79A0325DA706900A6CCE0 /* Swipetest1.app */,
-				AEB79A1C25DA706A00A6CCE0 /* Swipetest1Tests.xctest */,
-				AEB79A2725DA706A00A6CCE0 /* Swipetest1UITests.xctest */,
+				AEB79A0325DA706900A6CCE0 /* World Cup 2018.app */,
+				AEB79A1C25DA706A00A6CCE0 /* World Cup 2018Tests.xctest */,
+				AEB79A2725DA706A00A6CCE0 /* World Cup 2018UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -193,6 +203,12 @@
 				36F762EAC0E5B6205BF6A42A /* Pods-Swipetest1.release.xcconfig */,
 				DAEAEF5A1C367DC596DF3F75 /* Pods-Swipetest1Tests.debug.xcconfig */,
 				A6744F326AAF9474A802FD26 /* Pods-Swipetest1Tests.release.xcconfig */,
+				9C572209B91F4D53E7DE5B3F /* Pods-World Cup 2018.debug.xcconfig */,
+				81BAD061537C5CA92106A429 /* Pods-World Cup 2018.release.xcconfig */,
+				BBBA6A89D368ED2F2EE3AF7A /* Pods-World Cup 2018-World Cup 2018UITests.debug.xcconfig */,
+				F9BD0D6F5CC90BECB5EAD9C4 /* Pods-World Cup 2018-World Cup 2018UITests.release.xcconfig */,
+				6C8ADD1D1C2802DDC3BC1388 /* Pods-World Cup 2018Tests.debug.xcconfig */,
+				232A2358E40ADE34229B219E /* Pods-World Cup 2018Tests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -200,9 +216,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AEB79A0225DA706900A6CCE0 /* Swipetest1 */ = {
+		AEB79A0225DA706900A6CCE0 /* World Cup 2018 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AEB79A3025DA706A00A6CCE0 /* Build configuration list for PBXNativeTarget "Swipetest1" */;
+			buildConfigurationList = AEB79A3025DA706A00A6CCE0 /* Build configuration list for PBXNativeTarget "World Cup 2018" */;
 			buildPhases = (
 				EEE5683B1BA73A91D82F1A95 /* [CP] Check Pods Manifest.lock */,
 				AEB799FF25DA706900A6CCE0 /* Sources */,
@@ -214,14 +230,14 @@
 			);
 			dependencies = (
 			);
-			name = Swipetest1;
+			name = "World Cup 2018";
 			productName = Swipetest1;
-			productReference = AEB79A0325DA706900A6CCE0 /* Swipetest1.app */;
+			productReference = AEB79A0325DA706900A6CCE0 /* World Cup 2018.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AEB79A1B25DA706A00A6CCE0 /* Swipetest1Tests */ = {
+		AEB79A1B25DA706A00A6CCE0 /* World Cup 2018Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AEB79A3325DA706A00A6CCE0 /* Build configuration list for PBXNativeTarget "Swipetest1Tests" */;
+			buildConfigurationList = AEB79A3325DA706A00A6CCE0 /* Build configuration list for PBXNativeTarget "World Cup 2018Tests" */;
 			buildPhases = (
 				A3FF5C6372350A7570711BC7 /* [CP] Check Pods Manifest.lock */,
 				AEB79A1825DA706A00A6CCE0 /* Sources */,
@@ -233,27 +249,29 @@
 			dependencies = (
 				AEB79A1E25DA706A00A6CCE0 /* PBXTargetDependency */,
 			);
-			name = Swipetest1Tests;
+			name = "World Cup 2018Tests";
 			productName = Swipetest1Tests;
-			productReference = AEB79A1C25DA706A00A6CCE0 /* Swipetest1Tests.xctest */;
+			productReference = AEB79A1C25DA706A00A6CCE0 /* World Cup 2018Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		AEB79A2625DA706A00A6CCE0 /* Swipetest1UITests */ = {
+		AEB79A2625DA706A00A6CCE0 /* World Cup 2018UITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AEB79A3625DA706A00A6CCE0 /* Build configuration list for PBXNativeTarget "Swipetest1UITests" */;
+			buildConfigurationList = AEB79A3625DA706A00A6CCE0 /* Build configuration list for PBXNativeTarget "World Cup 2018UITests" */;
 			buildPhases = (
+				D2A99313A4F1D8236B44F324 /* [CP] Check Pods Manifest.lock */,
 				AEB79A2325DA706A00A6CCE0 /* Sources */,
 				AEB79A2425DA706A00A6CCE0 /* Frameworks */,
 				AEB79A2525DA706A00A6CCE0 /* Resources */,
+				5E46D0567E189D541A40E8D2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				AEB79A2925DA706A00A6CCE0 /* PBXTargetDependency */,
 			);
-			name = Swipetest1UITests;
+			name = "World Cup 2018UITests";
 			productName = Swipetest1UITests;
-			productReference = AEB79A2725DA706A00A6CCE0 /* Swipetest1UITests.xctest */;
+			productReference = AEB79A2725DA706A00A6CCE0 /* World Cup 2018UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -278,7 +296,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AEB799FE25DA706900A6CCE0 /* Build configuration list for PBXProject "Swipetest1" */;
+			buildConfigurationList = AEB799FE25DA706900A6CCE0 /* Build configuration list for PBXProject "World Cup 2018" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -291,9 +309,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AEB79A0225DA706900A6CCE0 /* Swipetest1 */,
-				AEB79A1B25DA706A00A6CCE0 /* Swipetest1Tests */,
-				AEB79A2625DA706A00A6CCE0 /* Swipetest1UITests */,
+				AEB79A0225DA706900A6CCE0 /* World Cup 2018 */,
+				AEB79A1B25DA706A00A6CCE0 /* World Cup 2018Tests */,
+				AEB79A2625DA706A00A6CCE0 /* World Cup 2018UITests */,
 			);
 		};
 /* End PBXProject section */
@@ -329,6 +347,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5E46D0567E189D541A40E8D2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-World Cup 2018-World Cup 2018UITests/Pods-World Cup 2018-World Cup 2018UITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-World Cup 2018-World Cup 2018UITests/Pods-World Cup 2018-World Cup 2018UITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-World Cup 2018-World Cup 2018UITests/Pods-World Cup 2018-World Cup 2018UITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A3FF5C6372350A7570711BC7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -344,7 +379,29 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Swipetest1Tests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-World Cup 2018Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2A99313A4F1D8236B44F324 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-World Cup 2018-World Cup 2018UITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -357,15 +414,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Swipetest1/Pods-Swipetest1-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-World Cup 2018/Pods-World Cup 2018-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Swipetest1/Pods-Swipetest1-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-World Cup 2018/Pods-World Cup 2018-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Swipetest1/Pods-Swipetest1-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-World Cup 2018/Pods-World Cup 2018-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EEE5683B1BA73A91D82F1A95 /* [CP] Check Pods Manifest.lock */ = {
@@ -383,7 +440,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Swipetest1-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-World Cup 2018-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -432,12 +489,12 @@
 /* Begin PBXTargetDependency section */
 		AEB79A1E25DA706A00A6CCE0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AEB79A0225DA706900A6CCE0 /* Swipetest1 */;
+			target = AEB79A0225DA706900A6CCE0 /* World Cup 2018 */;
 			targetProxy = AEB79A1D25DA706A00A6CCE0 /* PBXContainerItemProxy */;
 		};
 		AEB79A2925DA706A00A6CCE0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AEB79A0225DA706900A6CCE0 /* Swipetest1 */;
+			target = AEB79A0225DA706900A6CCE0 /* World Cup 2018 */;
 			targetProxy = AEB79A2825DA706A00A6CCE0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -580,7 +637,7 @@
 		};
 		AEB79A3125DA706A00A6CCE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3C2B656EADD14A7152DE33D9 /* Pods-Swipetest1.debug.xcconfig */;
+			baseConfigurationReference = 9C572209B91F4D53E7DE5B3F /* Pods-World Cup 2018.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -591,7 +648,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = StephaneTrouve.Swipetest1;
+				PRODUCT_BUNDLE_IDENTIFIER = StephaneTrouve.WorldCup2018;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -600,7 +657,7 @@
 		};
 		AEB79A3225DA706A00A6CCE0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 36F762EAC0E5B6205BF6A42A /* Pods-Swipetest1.release.xcconfig */;
+			baseConfigurationReference = 81BAD061537C5CA92106A429 /* Pods-World Cup 2018.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -611,7 +668,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = StephaneTrouve.Swipetest1;
+				PRODUCT_BUNDLE_IDENTIFIER = StephaneTrouve.WorldCup2018;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -620,7 +677,7 @@
 		};
 		AEB79A3425DA706A00A6CCE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DAEAEF5A1C367DC596DF3F75 /* Pods-Swipetest1Tests.debug.xcconfig */;
+			baseConfigurationReference = 6C8ADD1D1C2802DDC3BC1388 /* Pods-World Cup 2018Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -637,13 +694,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Swipetest1.app/Swipetest1";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/World Cup 2018.app/World Cup 2018";
 			};
 			name = Debug;
 		};
 		AEB79A3525DA706A00A6CCE0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A6744F326AAF9474A802FD26 /* Pods-Swipetest1Tests.release.xcconfig */;
+			baseConfigurationReference = 232A2358E40ADE34229B219E /* Pods-World Cup 2018Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -660,12 +717,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Swipetest1.app/Swipetest1";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/World Cup 2018.app/World Cup 2018";
 			};
 			name = Release;
 		};
 		AEB79A3725DA706A00A6CCE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BBBA6A89D368ED2F2EE3AF7A /* Pods-World Cup 2018-World Cup 2018UITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -686,6 +744,7 @@
 		};
 		AEB79A3825DA706A00A6CCE0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9BD0D6F5CC90BECB5EAD9C4 /* Pods-World Cup 2018-World Cup 2018UITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -707,7 +766,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AEB799FE25DA706900A6CCE0 /* Build configuration list for PBXProject "Swipetest1" */ = {
+		AEB799FE25DA706900A6CCE0 /* Build configuration list for PBXProject "World Cup 2018" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AEB79A2E25DA706A00A6CCE0 /* Debug */,
@@ -716,7 +775,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AEB79A3025DA706A00A6CCE0 /* Build configuration list for PBXNativeTarget "Swipetest1" */ = {
+		AEB79A3025DA706A00A6CCE0 /* Build configuration list for PBXNativeTarget "World Cup 2018" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AEB79A3125DA706A00A6CCE0 /* Debug */,
@@ -725,7 +784,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AEB79A3325DA706A00A6CCE0 /* Build configuration list for PBXNativeTarget "Swipetest1Tests" */ = {
+		AEB79A3325DA706A00A6CCE0 /* Build configuration list for PBXNativeTarget "World Cup 2018Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AEB79A3425DA706A00A6CCE0 /* Debug */,
@@ -734,7 +793,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AEB79A3625DA706A00A6CCE0 /* Build configuration list for PBXNativeTarget "Swipetest1UITests" */ = {
+		AEB79A3625DA706A00A6CCE0 /* Build configuration list for PBXNativeTarget "World Cup 2018UITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AEB79A3725DA706A00A6CCE0 /* Debug */,
