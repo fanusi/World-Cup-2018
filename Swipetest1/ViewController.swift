@@ -354,9 +354,73 @@ class ViewController: UIViewController {
         
     }
     
+    func calc_ext (round: Int, game: Int, speler: [Pronostiek], start: Int, end: Int ) -> Int {
+        
+        var punten: Int = 0
+        
+        var homegoals_real: Int = 0
+        var awaygoals_real: Int = 0
+        
+        let homegoals_prono: Int = Int(speler[game].home_Goals)
+        let awaygoals_prono: Int = Int(speler[game].away_Goals)
+        let hometeam_prono: String = speler[game].home_Team!
+        let awayteam_prono: String = speler[game].away_Team!
+        
+        //Points for guessing right teams in round
+        for i in start...end {
+        
+            if hometeam_prono == PronosA[i].home_Team {
+                
+                punten = punten + round
+                homegoals_real = Int(PronosA[i].home_Goals)
+                
+            } else if hometeam_prono == PronosA[i].away_Team {
+                
+                punten = punten + round
+                homegoals_real = Int(PronosA[i].away_Goals)
+            
+            }
+            
+            if awayteam_prono == PronosA[i].away_Team {
+                
+                punten = punten + round
+                awaygoals_real = Int(PronosA[i].away_Goals)
+                
+            } else if awayteam_prono == PronosA[i].home_Team {
+                
+                punten = punten + round
+                awaygoals_real = Int(PronosA[i].home_Goals)
+            
+            }
+            
+        }
+        
+        if punten == round * 2 {
+            
+            punten = punten + calc_simple(hg_p: homegoals_prono, ag_p: awaygoals_prono, hg_r: homegoals_real, ag_r: awaygoals_real)
+            
+        }
+        
+        
+        return punten
+        
+        
+    }
+    
     func calculator (speler: [Pronostiek]) {
         
-    
+        let tellerA:Int = 48
+        // Index start of round best of 16
+        
+        let tellerQ:Int = 56
+        // Index start of round quarter finals
+
+        let tellerS:Int = 60
+        // Index start of round semi finals
+   
+        let tellerF:Int = 62
+        // Index start of round semi finals
+        
         for j in 0...ga-1 {
             
             //reset punten voor elke match
@@ -367,9 +431,35 @@ class ViewController: UIViewController {
             let homegoals_prono: Int = Int(speler[j].home_Goals)
             let awaygoals_prono: Int = Int(speler[j].away_Goals)
     
-            punten = punten + calc_simple(hg_p: homegoals_prono, ag_p: awaygoals_prono, hg_r: homegoals_real, ag_r: awaygoals_real)
+            if j < tellerA {
+                
+                //First round
+                punten = punten + calc_simple(hg_p: homegoals_prono, ag_p: awaygoals_prono, hg_r: homegoals_real, ag_r: awaygoals_real)
     
+            } else if j < tellerQ {
+                
+                //Best of 16
+                punten = punten + calc_ext(round: 3,game: j, speler: speler, start: tellerA, end: tellerQ-1)
+                
+            } else if j < tellerS {
+                
+                //Quarter finals
+                punten = punten + calc_ext(round: 4,game: j, speler: speler, start: tellerQ, end: tellerS-1)
+               
+            } else if j < tellerF {
+                
+                //semi finals
+                punten = punten + calc_ext(round: 5,game: j, speler: speler, start: tellerS, end: tellerF-1)
+                
+            } else if j == ga-1 {
+                
+                //Final
+                punten = punten + calc_ext(round: 6,game: j, speler: speler, start: tellerF+1, end: ga-1)
+               
+            }
             
+            
+                
             //toewijzen van punten
             let stat = Statistiek(context: context)
             stat.punten = Int16(punten)
