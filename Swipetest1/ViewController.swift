@@ -31,6 +31,9 @@ class ViewController: UIViewController {
     let pr:Int = 43
     //Number of players
     
+    let G2:Int = 48
+    //Match index number 2nd round
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
@@ -146,6 +149,24 @@ class ViewController: UIViewController {
                             newFixture.round = niveau1.api.fixtures[n].round
                             newFixture.home_Goals = Int16(niveau1.api.fixtures[n].goalsHomeTeam)
                             newFixture.away_Goals = Int16(niveau1.api.fixtures[n].goalsAwayTeam)
+                            
+                            if n >= self.G2 && niveau1.api.fixtures[n].statusShort == "PEN" {
+                                
+                                
+                                print("penalties: " + String(n) + " /// " + niveau1.api.fixtures[n].score.penalty)
+                                
+                                if self.penalties(pscore: niveau1.api.fixtures[n].score.penalty) {
+
+                                    newFixture.home_Goals = newFixture.home_Goals + 1
+
+                                } else {
+
+                                    newFixture.away_Goals = newFixture.away_Goals + 1
+
+                                }
+                                
+                            }
+                            
                             newFixture.home_Team = niveau1.api.fixtures[n].homeTeam.team_name
                             newFixture.away_Team = niveau1.api.fixtures[n].awayTeam.team_name
                             newFixture.fulltime = niveau1.api.fixtures[n].score.fulltime
@@ -395,12 +416,15 @@ class ViewController: UIViewController {
             
         }
         
+        print("round " + String(round) + " punten " + String(punten))
+        
         if punten == round * 2 {
             
             punten = punten + calc_simple(hg_p: homegoals_prono, ag_p: awaygoals_prono, hg_r: homegoals_real, ag_r: awaygoals_real)
             
         }
         
+        print("totaal " + String(punten))
         
         return punten
         
@@ -419,7 +443,7 @@ class ViewController: UIViewController {
         // Index start of round semi finals
    
         let tellerF:Int = 62
-        // Index start of round semi finals
+        // Index start of round final
         
         for j in 0...ga-1 {
             
@@ -630,6 +654,18 @@ class ViewController: UIViewController {
                 }
                 
             }
+        
+    }
+    
+    func penalties (pscore: String) -> Bool {
+        
+        let delim: String = "-"
+        let token =  pscore.components(separatedBy: delim)
+
+        let phg: Int = Int(token[0])!
+        let pag: Int = Int(token[1])!
+        
+        return phg > pag
         
     }
 

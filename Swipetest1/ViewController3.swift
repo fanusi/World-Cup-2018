@@ -149,7 +149,9 @@ class ViewController3: UIViewController {
             
             
             let temp1:String = PronosA[teller].home_Team! + " - " + PronosA[teller].away_Team!
-            let temp2:String = PronosA[teller].fulltime!
+            //let temp2:String = PronosA[teller].fulltime!
+            let temp2:String = String(PronosA[teller].home_Goals) + " - " + String(PronosA[teller].away_Goals)
+            
             var temp3:String = ""
             
             

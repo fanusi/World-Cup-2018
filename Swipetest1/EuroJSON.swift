@@ -14,7 +14,8 @@ struct fixture: Codable {
     var status: String
     var awayTeam: AT
     var homeTeam: HT
-    var score: FT
+    var score: SC
+    var statusShort: String
     var goalsAwayTeam: Int
     var goalsHomeTeam: Int
     
@@ -28,6 +29,7 @@ struct fixture: Codable {
            case goalsAwayTeam
            case goalsHomeTeam
            case score
+           case statusShort
        }
        
        // The Initializer function from Decodable
@@ -39,7 +41,7 @@ struct fixture: Codable {
            fixture_id = try values.decode(Int.self, forKey: .fixture_id)
            awayTeam = try values.decode(AT.self, forKey: .awayTeam)
            homeTeam = try values.decode(HT.self, forKey: .homeTeam)
-           score =  try values.decode(FT.self, forKey: .score)
+           score =  try values.decode(SC.self, forKey: .score)
            status =  try values.decode(String.self, forKey: .status)
            
            // 3 - Conditional Decoding
@@ -66,7 +68,12 @@ struct fixture: Codable {
             } else {
                 self.venue = "NA"
             }
-        
+
+            if var statusShort =  try values.decodeIfPresent(String.self, forKey: .statusShort) {
+                self.statusShort = statusShort
+            } else {
+                self.statusShort = "NA"
+            }
         
        }
 }
@@ -125,11 +132,13 @@ struct HT: Codable {
     
 }
 
-struct FT: Codable {
+struct SC: Codable {
     var fulltime: String
+    var penalty: String
     
     enum CodingKeys: String, CodingKey {
            case fulltime
+           case penalty
        }
     
     init(from decoder: Decoder) throws {
@@ -142,6 +151,12 @@ struct FT: Codable {
             self.fulltime = fulltime
         } else {
             self.fulltime = "-"
+        }
+ 
+        if var penalty =  try values.decodeIfPresent(String.self, forKey: .penalty) {
+            self.penalty = penalty
+        } else {
+            self.penalty = "-"
         }
         
     }
