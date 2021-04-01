@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		14D36AB4C6D875C278D20DF7 /* Pods_World_Cup_2018_World_Cup_2018UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8575D2F0401FF3767728131D /* Pods_World_Cup_2018_World_Cup_2018UITests.framework */; };
 		7552E6BAA08C6C452448EE1F /* Pods_World_Cup_2018Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D151E6F4462E23D6ABCD1120 /* Pods_World_Cup_2018Tests.framework */; };
-		AE118717260E279D00CD3272 /* WK 18.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = AE118716260E279D00CD3272 /* WK 18.xlsx */; };
+		AE0B9DE42615D2E900F848A6 /* WK 18.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = AE0B9DE32615D2E900F848A6 /* WK 18.xlsx */; };
 		AE31D5762604B65600C4CB0F /* Scores.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE31D5752604B65600C4CB0F /* Scores.swift */; };
 		AE780E0025DAC82C006C8EEF /* EuroJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE780DFF25DAC82C006C8EEF /* EuroJSON.swift */; };
 		AE780E0825DAC9D9006C8EEF /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE780E0525DAC9D9006C8EEF /* UIScrollView+.swift */; };
@@ -59,7 +59,7 @@
 		8575D2F0401FF3767728131D /* Pods_World_Cup_2018_World_Cup_2018UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_World_Cup_2018_World_Cup_2018UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C572209B91F4D53E7DE5B3F /* Pods-World Cup 2018.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-World Cup 2018.debug.xcconfig"; path = "Target Support Files/Pods-World Cup 2018/Pods-World Cup 2018.debug.xcconfig"; sourceTree = "<group>"; };
 		A6744F326AAF9474A802FD26 /* Pods-Swipetest1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipetest1Tests.release.xcconfig"; path = "Target Support Files/Pods-Swipetest1Tests/Pods-Swipetest1Tests.release.xcconfig"; sourceTree = "<group>"; };
-		AE118716260E279D00CD3272 /* WK 18.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WK 18.xlsx"; sourceTree = SOURCE_ROOT; };
+		AE0B9DE32615D2E900F848A6 /* WK 18.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WK 18.xlsx"; sourceTree = SOURCE_ROOT; };
 		AE31C4B22609F87400B41ACB /* Test1.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Test1.xlsx; sourceTree = SOURCE_ROOT; };
 		AE31D5752604B65600C4CB0F /* Scores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scores.swift; sourceTree = "<group>"; };
 		AE780DFF25DAC82C006C8EEF /* EuroJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EuroJSON.swift; sourceTree = "<group>"; };
@@ -169,10 +169,10 @@
 				AEB79A0A25DA706900A6CCE0 /* ViewController.swift */,
 				AEB79A3C25DA7F5200A6CCE0 /* ViewController2.swift */,
 				AEB79A4425DA883100A6CCE0 /* ViewController3.swift */,
+				AE0B9DE32615D2E900F848A6 /* WK 18.xlsx */,
 				AEB79A1225DA706A00A6CCE0 /* Assets.xcassets */,
 				AEB79A1425DA706A00A6CCE0 /* LaunchScreen.storyboard */,
 				AE31C4B22609F87400B41ACB /* Test1.xlsx */,
-				AE118716260E279D00CD3272 /* WK 18.xlsx */,
 				AEB79A1725DA706A00A6CCE0 /* Info.plist */,
 				AEB79A0F25DA706900A6CCE0 /* Swipetest1.xcdatamodeld */,
 				AE780DFF25DAC82C006C8EEF /* EuroJSON.swift */,
@@ -326,7 +326,7 @@
 			files = (
 				AE7CA6682609F927003581DD /* Test1.xlsx in Resources */,
 				AEB79A1625DA706A00A6CCE0 /* LaunchScreen.storyboard in Resources */,
-				AE118717260E279D00CD3272 /* WK 18.xlsx in Resources */,
+				AE0B9DE42615D2E900F848A6 /* WK 18.xlsx in Resources */,
 				AEB79A1325DA706A00A6CCE0 /* Assets.xcassets in Resources */,
 				AEB79A0E25DA706900A6CCE0 /* Main.storyboard in Resources */,
 			);

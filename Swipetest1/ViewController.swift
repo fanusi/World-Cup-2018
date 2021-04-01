@@ -104,6 +104,7 @@ class ViewController: UIViewController {
         mainview.addSubview(sview)
         sview.edgeTo(view: mainview)
         scoreView(view1: sview)
+    
         
     }
     
@@ -206,6 +207,19 @@ class ViewController: UIViewController {
             routine()
             createlabels(view1: view1)
             view1.contentSize = CGSize(width: view1.frame.width, height: view1.frame.height * CGFloat(Double(PronosB.count + 3) * 0.05))
+            
+//            for i in 0...ga-1 {
+//
+//                print(PronosB[0][i].home_Team! + " - " + PronosB[0][i].away_Team!)
+//                print(String(PronosB[0][i].home_Goals) + " - " + String(PronosB[0][i].away_Goals))
+//
+//                print("//")
+//
+//                print(PronosA[i].home_Team! + " - " + PronosB[0][i].away_Team!)
+//                print(String(PronosA[i].home_Goals) + " - " + String(PronosA[i].away_Goals))
+//
+//                print("//")
+//            }
             
         } else {
             
@@ -378,9 +392,12 @@ class ViewController: UIViewController {
     func calc_ext (round: Int, game: Int, speler: [Pronostiek], start: Int, end: Int ) -> Int {
         
         var punten: Int = 0
+        var dcheck: Int = 0
         
         var homegoals_real: Int = 0
         var awaygoals_real: Int = 0
+        var hometeam_real: String = ""
+        var awayteam_real: String = ""
         
         let homegoals_prono: Int = Int(speler[game].home_Goals)
         let awaygoals_prono: Int = Int(speler[game].away_Goals)
@@ -390,15 +407,21 @@ class ViewController: UIViewController {
         //Points for guessing right teams in round
         for i in start...end {
         
+            dcheck = 0
+            
             if hometeam_prono == PronosA[i].home_Team {
                 
                 punten = punten + round
                 homegoals_real = Int(PronosA[i].home_Goals)
+                hometeam_real = PronosA[i].home_Team!
+                dcheck = 1
                 
             } else if hometeam_prono == PronosA[i].away_Team {
                 
                 punten = punten + round
                 homegoals_real = Int(PronosA[i].away_Goals)
+                hometeam_real = PronosA[i].away_Team!
+                dcheck = 1
             
             }
             
@@ -406,25 +429,37 @@ class ViewController: UIViewController {
                 
                 punten = punten + round
                 awaygoals_real = Int(PronosA[i].away_Goals)
+                awayteam_real = PronosA[i].away_Team!
+                dcheck = dcheck + 1
                 
             } else if awayteam_prono == PronosA[i].home_Team {
                 
                 punten = punten + round
                 awaygoals_real = Int(PronosA[i].home_Goals)
+                awayteam_real = PronosA[i].home_Team!
+                dcheck = dcheck + 1
             
+            }
+            
+            if dcheck == 2 {
+                
+                punten = punten + calc_simple(hg_p: homegoals_prono, ag_p: awaygoals_prono, hg_r: homegoals_real, ag_r: awaygoals_real)
+                
             }
             
         }
         
-        print("round " + String(round) + " punten " + String(punten))
+        if speler[0].user == "Jacob" {
         
-        if punten == round * 2 {
+            print(hometeam_real + " - " + awayteam_real + "    " + String(homegoals_real) + "-" + String(awaygoals_real))
             
-            punten = punten + calc_simple(hg_p: homegoals_prono, ag_p: awaygoals_prono, hg_r: homegoals_real, ag_r: awaygoals_real)
+            print(hometeam_prono + " - " + awayteam_prono + "    " + String(homegoals_prono) + "-" + String(awaygoals_prono))
+            
+            print("round " + String(round) + " punten " + String(punten))
+            
+            print("//")
             
         }
-        
-        print("totaal " + String(punten))
         
         return punten
         
@@ -459,6 +494,20 @@ class ViewController: UIViewController {
                 
                 //First round
                 punten = punten + calc_simple(hg_p: homegoals_prono, ag_p: awaygoals_prono, hg_r: homegoals_real, ag_r: awaygoals_real)
+                
+                if speler[0].user == "Jacob" {
+                
+                    print(PronosA[j].home_Team! + " - " + PronosA[j].away_Team!)
+                    print(String(homegoals_real) + "-" + String(awaygoals_real))
+                    
+                    print(speler[j].home_Team! + " - " + speler[j].away_Team!)
+                    print(String(homegoals_prono) + "-" + String(awaygoals_prono))
+                    
+                    print(" punten " + String(punten))
+                    
+                    print("//")
+                    
+                }
     
             } else if j < tellerQ {
                 
