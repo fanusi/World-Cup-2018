@@ -447,6 +447,20 @@ class ViewController: UIViewController {
                 
             }
             
+            if round == 6 {
+                
+                if homegoals_real > awaygoals_real && homegoals_prono > awaygoals_prono {
+                    
+                    punten = punten + 10
+                    
+                } else if homegoals_real < awaygoals_real && homegoals_prono < awaygoals_prono {
+                    
+                    punten = punten + 10
+                    
+                }
+                
+            }
+            
         }
         
         if speler[0].user == "Jacob" {
