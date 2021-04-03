@@ -17,7 +17,7 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
     let u1:Int = 7
     //Number of subviews on screen
     
-    let ind: [Int] = [sr, qf, sf, f]
+    let ind: [Int] = [sr, qf, sf, f, ga]
     
     var fg:Int = 0
     
@@ -276,10 +276,12 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
             } else {
                 
                 // here will come second round
-                Astrings.append(PronosB[gebr][choice1].home_Team!)
-                Astrings.append(String(PronosB[gebr][choice1].home_Goals))
-                Astrings.append(String(PronosB[gebr][choice1].away_Goals))
-                Astrings.append(PronosB[gebr][choice1].away_Team!)
+//                Astrings.append(PronosB[gebr][choice1].home_Team!)
+//                Astrings.append(String(PronosB[gebr][choice1].home_Goals))
+//                Astrings.append(String(PronosB[gebr][choice1].away_Goals))
+//                Astrings.append(PronosB[gebr][choice1].away_Team!)
+                
+                Astrings = secondround(game: choice1, user: gebr, rteam1: team1, rteam2: team2)
                 
             }
 
@@ -330,81 +332,184 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
             
         }
     
-    func secondround (game: Int, user: Int, rteam1: String, rteam2: String) -> [String] {
+    func subsecond (a1: String, a2: String, a3: String, a4: String, rteam1: String, rteam2: String, i: Int, user: Int, round: Int) -> [String] {
         
         var arr:[String] = []
+        var a1: String = a1
+        var a2: String = a2
+        var a3: String = a3
+        var a4: String = a4
+        
+        var dummy: Int = 0
+        
+        if PronosB[user][i].home_Team! == rteam1 {
+            
+            if PronosB[user][i].away_Team! == rteam2 {
+                
+                //Perfect guess
+                a1 = PronosB[user][i].home_Team!
+                a2 = String(PronosB[user][i].home_Goals)
+                a3 = String(PronosB[user][i].away_Goals)
+                a4 = PronosB[user][i].away_Team!
+                
+                dummy = 1
+            
+            } else {
+                
+                // Check if team is in next round
+                for j in ind[round]...ind[round+1]-1 {
+                    
+                    if rteam1 == PronosB[user][j].home_Team! || rteam1 == PronosB[user][j].away_Team! {
+                        
+                        a1 = "Qualification " + rteam1
+                        
+                    }
+                    
+                }
+                
+            }
+
+        }
+        
+        if PronosB[user][i].away_Team! == rteam1 {
+            
+            if PronosB[user][i].home_Team! == rteam2  {
+                
+                //Perfect guess
+                a1 = PronosB[user][i].away_Team!
+                a2 = String(PronosB[user][i].away_Goals)
+                a3 = String(PronosB[user][i].home_Goals)
+                a4 = PronosB[user][i].home_Team!
+                
+                dummy = 1
+            
+            } else {
+                
+                // Check if team is in next round
+                for j in ind[round]...ind[round+1]-1 {
+                    
+                    if rteam1 == PronosB[user][j].home_Team! || rteam1 == PronosB[user][j].away_Team! {
+                        
+                        a1 = "Qualification " + rteam1
+                        
+                    }
+                    
+                }
+                
+            }
+
+        }
+ 
+        if PronosB[user][i].away_Team! == rteam2 {
+            
+            if dummy == 0 {
+                
+                // In case of no perfect guess we check if team is in next round
+                for j in ind[round]...ind[round+1]-1 {
+                    
+                    if rteam2 == PronosB[user][j].home_Team! || rteam2 == PronosB[user][j].away_Team! {
+                        
+                        a4 = "Qualification " + rteam2
+                        
+                    }
+                    
+                }
+                
+            }
+
+        }
+        
+        if PronosB[user][i].home_Team! == rteam2 {
+            
+            if dummy == 0 {
+                
+                // In case of no perfect guess we check if team is in next round
+                for j in ind[round]...ind[round+1]-1 {
+                    
+                    if rteam2 == PronosB[user][j].home_Team! || rteam2 == PronosB[user][j].away_Team! {
+                        
+                        a4 = "Qualification " + rteam2
+                        
+                    }
+                    
+                }
+                
+            }
+
+        }
+        
+        arr.append(a1)
+        arr.append(a2)
+        arr.append(a3)
+        arr.append(a4)
+        
+        return arr
+        
+    }
+    
+    func secondround (game: Int, user: Int, rteam1: String, rteam2: String) -> [String] {
+        
+        var arr:[String] = ["","","",""]
         var pteam1: String = ""
         var pteam2: String = ""
         var pgoals1: String = ""
         var pgoals2: String = ""
         
-        var dummy: Int = 0
-    
-        let b1: Bool = true
-        
         if game < ind[1] {
         // Round of 16
             
             for i in ind[0]...ind[1]-1 {
-            
-                if PronosB[user][i].home_Team! == rteam1 {
-                    
-                    if PronosB[user][i].away_Team! == rteam2 {
-                        
-                        //Perfect guess
-                        pteam1 = PronosB[user][i].home_Team!
-                        pteam2 = PronosB[user][i].away_Team!
-                        pgoals1 = String(PronosB[user][i].home_Goals)
-                        pgoals2 = String(PronosB[user][i].away_Goals)
-                        
-                        dummy = 1
-                    
-                    } else {
-                        
-                        // Check if team is in next round
-                        for j in ind[1]...ind[2]-1 {
-                            
-                            if rteam1 == PronosB[user][j].home_Team! || rteam1 == PronosB[user][j].away_Team! {
-                                
-                                pteam1 = "Qualification " + rteam1
-                                
-                            }
-                            
-                        }
-                        
-                    }
-    
-                }
                 
-                if PronosB[user][i].away_Team! == rteam1 && dummy == 0 {
-                    
-                    if PronosB[user][i].home_Team! == rteam2 {
-                        
-                        //Perfect guess
-                        pteam2 = PronosB[user][i].home_Team!
-                        pteam1 = PronosB[user][i].away_Team!
-                        pgoals2 = String(PronosB[user][i].home_Goals)
-                        pgoals1 = String(PronosB[user][i].away_Goals)
-                    
-                    } else {
-                        
-                        // Check if team is in next round
-                        for j in ind[1]...ind[2]-1 {
-                            
-                            if rteam1 == PronosB[user][j].home_Team! || rteam1 == PronosB[user][j].away_Team! {
-                                
-                                pteam1 = "Qualification " + rteam1
-                                
-                            }
-                            
-                        }
-                        
-                    }
-    
-                }
+                arr = subsecond(a1: arr[0], a2: arr[1], a3: arr[2], a4: arr[3], rteam1: rteam1, rteam2: rteam2, i: i, user: user, round: 1)
                 
             }
         
+        } else if game < ind[2] {
+            // Quarter finals
+                
+            for i in ind[1]...ind[2]-1 {
+                
+                arr = subsecond(a1: arr[0], a2: arr[1], a3: arr[2], a4: arr[3], rteam1: rteam1, rteam2: rteam2, i: i, user: user, round: 2)
+                
+            }
+            
+        } else if game < ind[3] {
+            // semi finals
+                
+            for i in ind[2]...ind[3]-1 {
+                
+                arr = subsecond(a1: arr[0], a2: arr[1], a3: arr[2], a4: arr[3], rteam1: rteam1, rteam2: rteam2, i: i, user: user, round: 3)
+                
+            }
+            
+        } else {
+            
+            arr = ["","","",""]
+            // Finals
+            
+//            for i in ind[3]...ga-1 {
+//
+//                var winner: String = ""
+//
+//                if PronosB[user][i].home_Goals > PronosB[user][i].away_Goals {
+//
+//                    winner = PronosB[user][i].home_Team!
+//
+//                } else if PronosB[user][i].home_Goals < PronosB[user][i].away_Goals {
+//
+//                    winner = PronosB[user][i].away_Team!
+//
+//                }
+//
+//                if winner = rteam1 {
+//
+//
+//
+//                }
+//
+//
+//            }
+            
             
         }
         
