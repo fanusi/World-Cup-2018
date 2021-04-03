@@ -20,6 +20,18 @@ public let b1:CGFloat = 0.15
 public let ga:Int = 64
 //Number of matches
 
+public let sr:Int = 48
+//Match index number 2nd round
+
+public let qf:Int = 56
+//start quarter finals
+
+public let sf:Int = 60
+//start semi finals
+
+public let f:Int = 62
+//start finals
+
 var scores = [Scores]()
 // Users and their scores
 
@@ -30,9 +42,6 @@ class ViewController: UIViewController {
     
     let pr:Int = 43
     //Number of players
-    
-    let G2:Int = 48
-    //Match index number 2nd round
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
@@ -151,7 +160,7 @@ class ViewController: UIViewController {
                             newFixture.home_Goals = Int16(niveau1.api.fixtures[n].goalsHomeTeam)
                             newFixture.away_Goals = Int16(niveau1.api.fixtures[n].goalsAwayTeam)
                             
-                            if n >= self.G2 && niveau1.api.fixtures[n].statusShort == "PEN" {
+                            if n >= sr && niveau1.api.fixtures[n].statusShort == "PEN" {
                                 
                                 
                                 print("penalties: " + String(n) + " /// " + niveau1.api.fixtures[n].score.penalty)

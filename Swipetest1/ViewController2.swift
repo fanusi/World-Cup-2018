@@ -17,6 +17,8 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
     let u1:Int = 7
     //Number of subviews on screen
     
+    let ind: [Int] = [sr, qf, sf, f]
+    
     var fg:Int = 0
     
     override func viewDidLoad() {
@@ -39,6 +41,7 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
                 }
                 
             }
+            
         } else {
             
             fg = -1
@@ -180,7 +183,7 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
             View1.addSubview(sview)
             sview.edgeTo(view: View1)
             
-            visualizer(choice1: row-1, team1: PronosB[0][row-1].home_Team!, team2: PronosB[0][row-1].away_Team!, viewP: sview)
+            visualizer(choice1: row-1, team1: PronosA[row-1].home_Team!, team2: PronosA[row-1].away_Team!, viewP: sview)
             
         }
         
@@ -257,24 +260,36 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
             let h1 = y0 * 0.3
             var w1:CGFloat = 0
             
+            var Astrings:[String] = []
+            var Svalue: String = ""
             
-            let temp1:String = PronosB[gebr][choice1].home_Team!
-            var temp2:String = ""
-            var temp3:String = ""
-            let temp4:String = PronosB[gebr][choice1].away_Team!
-            var temp5:String = ""
+            Astrings.removeAll()
             
-            temp2 = String(PronosB[gebr][choice1].home_Goals)
-            temp3 = String(PronosB[gebr][choice1].away_Goals)
-            
-            
+            if choice1 < ind[1] {
+                
+                // First round
+                Astrings.append(PronosB[gebr][choice1].home_Team!)
+                Astrings.append(String(PronosB[gebr][choice1].home_Goals))
+                Astrings.append(String(PronosB[gebr][choice1].away_Goals))
+                Astrings.append(PronosB[gebr][choice1].away_Team!)
+                
+            } else {
+                
+                // here will come second round
+                Astrings.append(PronosB[gebr][choice1].home_Team!)
+                Astrings.append(String(PronosB[gebr][choice1].home_Goals))
+                Astrings.append(String(PronosB[gebr][choice1].away_Goals))
+                Astrings.append(PronosB[gebr][choice1].away_Team!)
+                
+            }
+
             if type == 1 {
             
                 x1 = 0.35 * x0
                 w1 = 0.40 * x0
                 y1 = 0.30 * y0
                 
-                temp5 = temp1
+                Svalue = Astrings[0]
                 
             }
             
@@ -284,7 +299,7 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
                 w1 = 0.10 * x0
                 y1 = 0.30 * y0
                 
-                temp5 = temp2
+                Svalue = Astrings[1]
                 
             }
             
@@ -294,7 +309,7 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
                 w1 = 0.10 * x0
                 y1 = 0.60 * y0
                 
-                temp5 = temp3
+                Svalue = Astrings[2]
             }
             
             if type == 4 {
@@ -302,18 +317,105 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
                 x1 = 0.35 * x0
                 w1 = 0.40 * x0
                 y1 = 0.60 * y0
-                temp5 = temp4
+                Svalue = Astrings[3]
                 
             }
                 
             let label = UILabel(frame: CGRect(x: x1, y: y1, width: w1, height: h1))
             label.textAlignment = NSTextAlignment.left
-            label.text = temp5
+            label.text = Svalue
             label.font = UIFont.boldSystemFont(ofSize: 14.0)
             superviewer.addSubview(label)
 
             
         }
+    
+    func secondround (game: Int, user: Int, rteam1: String, rteam2: String) -> [String] {
+        
+        var arr:[String] = []
+        var pteam1: String = ""
+        var pteam2: String = ""
+        var pgoals1: String = ""
+        var pgoals2: String = ""
+        
+        var dummy: Int = 0
+    
+        let b1: Bool = true
+        
+        if game < ind[1] {
+        // Round of 16
+            
+            for i in ind[0]...ind[1]-1 {
+            
+                if PronosB[user][i].home_Team! == rteam1 {
+                    
+                    if PronosB[user][i].away_Team! == rteam2 {
+                        
+                        //Perfect guess
+                        pteam1 = PronosB[user][i].home_Team!
+                        pteam2 = PronosB[user][i].away_Team!
+                        pgoals1 = String(PronosB[user][i].home_Goals)
+                        pgoals2 = String(PronosB[user][i].away_Goals)
+                        
+                        dummy = 1
+                    
+                    } else {
+                        
+                        // Check if team is in next round
+                        for j in ind[1]...ind[2]-1 {
+                            
+                            if rteam1 == PronosB[user][j].home_Team! || rteam1 == PronosB[user][j].away_Team! {
+                                
+                                pteam1 = "Qualification " + rteam1
+                                
+                            }
+                            
+                        }
+                        
+                    }
+    
+                }
+                
+                if PronosB[user][i].away_Team! == rteam1 && dummy == 0 {
+                    
+                    if PronosB[user][i].home_Team! == rteam2 {
+                        
+                        //Perfect guess
+                        pteam2 = PronosB[user][i].home_Team!
+                        pteam1 = PronosB[user][i].away_Team!
+                        pgoals2 = String(PronosB[user][i].home_Goals)
+                        pgoals1 = String(PronosB[user][i].away_Goals)
+                    
+                    } else {
+                        
+                        // Check if team is in next round
+                        for j in ind[1]...ind[2]-1 {
+                            
+                            if rteam1 == PronosB[user][j].home_Team! || rteam1 == PronosB[user][j].away_Team! {
+                                
+                                pteam1 = "Qualification " + rteam1
+                                
+                            }
+                            
+                        }
+                        
+                    }
+    
+                }
+                
+            }
+        
+            
+        }
+        
+        arr.append(pteam1)
+        arr.append(String(pgoals1))
+        arr.append(String(pgoals2))
+        arr.append(pteam2)
+        
+        return arr
+        
+    }
     
     func removeSV (viewsv: UIView) {
      
