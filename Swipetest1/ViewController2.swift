@@ -265,7 +265,7 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
             
             Astrings.removeAll()
             
-            if choice1 < ind[1] {
+            if choice1 < ind[0] {
                 
                 // First round
                 Astrings.append(PronosB[gebr][choice1].home_Team!)
@@ -275,13 +275,22 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
                 
             } else {
                 
-                // here will come second round
-//                Astrings.append(PronosB[gebr][choice1].home_Team!)
-//                Astrings.append(String(PronosB[gebr][choice1].home_Goals))
-//                Astrings.append(String(PronosB[gebr][choice1].away_Goals))
-//                Astrings.append(PronosB[gebr][choice1].away_Team!)
+                // Second round
                 
-                Astrings = secondround(game: choice1, user: gebr, rteam1: team1, rteam2: team2)
+                if PronosA[choice1].home_Team! != "-" && PronosA[choice1].away_Team! != "-" {
+                //If teams are known, then we project the actual game, else the initial user predictions
+                
+                    Astrings = secondround(game: choice1, user: gebr, rteam1: team1, rteam2: team2)
+                    
+                } else {
+                    
+                    Astrings.append(PronosB[gebr][choice1].home_Team!)
+                    Astrings.append(String(PronosB[gebr][choice1].home_Goals))
+                    Astrings.append(String(PronosB[gebr][choice1].away_Goals))
+                    Astrings.append(PronosB[gebr][choice1].away_Team!)
+                    
+                }
+                
                 
             }
 
@@ -341,6 +350,13 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
         var a4: String = a4
         
         var dummy: Int = 0
+        var d2: Int = 0
+        
+        if round == 3 {
+            
+            d2 = 1
+            
+        }
         
         if PronosB[user][i].home_Team! == rteam1 {
             
@@ -357,15 +373,34 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
             } else {
                 
                 // Check if team is in next round
-                for j in ind[round]...ind[round+1]-1 {
                     
-                    if rteam1 == PronosB[user][j].home_Team! || rteam1 == PronosB[user][j].away_Team! {
+                if round != 4 {
+                // All rounds except finals
+                    
+                    for j in ind[round] + d2...ind[round+1]-1 {
                         
-                        a1 = "Qualification " + rteam1
+                        if rteam1 == PronosB[user][j].home_Team! || rteam1 == PronosB[user][j].away_Team! {
+                            
+                            a1 = "Qualification " + rteam1
+                            
+                        }
                         
                     }
                     
+                    
+                } else {
+                // Finals
+                    
+                    if PronosB[user][i].home_Goals > PronosB[user][i].away_Goals {
+                        
+                        a1 = "Winner " + rteam1
+                        
+                    }
+                    
+                    
                 }
+                
+
                 
             }
 
@@ -385,14 +420,29 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
             
             } else {
                 
-                // Check if team is in next round
-                for j in ind[round]...ind[round+1]-1 {
-                    
-                    if rteam1 == PronosB[user][j].home_Team! || rteam1 == PronosB[user][j].away_Team! {
+                if round != 4 {
+                // All rounds except finals
+                
+                    // Check if team is in next round
+                    for j in ind[round] + d2...ind[round+1]-1 {
                         
-                        a1 = "Qualification " + rteam1
+                        if rteam1 == PronosB[user][j].home_Team! || rteam1 == PronosB[user][j].away_Team! {
+                            
+                            a1 = "Qualification " + rteam1
+                            
+                        }
                         
                     }
+                
+                } else {
+                // Finals
+                    
+                    if PronosB[user][i].away_Goals > PronosB[user][i].home_Goals {
+                        
+                        a1 = "Winner " + rteam1
+                        
+                    }
+                    
                     
                 }
                 
@@ -404,14 +454,29 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
             
             if dummy == 0 {
                 
-                // In case of no perfect guess we check if team is in next round
-                for j in ind[round]...ind[round+1]-1 {
-                    
-                    if rteam2 == PronosB[user][j].home_Team! || rteam2 == PronosB[user][j].away_Team! {
+                if round != 4 {
+                // All rounds except finals
+                
+                    // In case of no perfect guess we check if team is in next round
+                    for j in ind[round] + d2...ind[round+1]-1 {
                         
-                        a4 = "Qualification " + rteam2
+                        if rteam2 == PronosB[user][j].home_Team! || rteam2 == PronosB[user][j].away_Team! {
+                            
+                            a4 = "Qualification " + rteam2
+                            
+                        }
                         
                     }
+                    
+                } else {
+                // Finals
+                    
+                    if PronosB[user][i].away_Goals > PronosB[user][i].home_Goals {
+                        
+                        a4 = "Winner " + rteam2
+                        
+                    }
+                    
                     
                 }
                 
@@ -423,14 +488,29 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
             
             if dummy == 0 {
                 
-                // In case of no perfect guess we check if team is in next round
-                for j in ind[round]...ind[round+1]-1 {
-                    
-                    if rteam2 == PronosB[user][j].home_Team! || rteam2 == PronosB[user][j].away_Team! {
+                if round != 4 {
+                // All rounds except finals
+                
+                    // In case of no perfect guess we check if team is in next round
+                    for j in ind[round] + d2...ind[round+1]-1 {
                         
-                        a4 = "Qualification " + rteam2
+                        if rteam2 == PronosB[user][j].home_Team! || rteam2 == PronosB[user][j].away_Team! {
+                            
+                            a4 = "Qualification " + rteam2
+                            
+                        }
                         
                     }
+                    
+                } else {
+                // Finals
+                    
+                    if PronosB[user][i].home_Goals > PronosB[user][i].away_Goals {
+                        
+                        a4 = "Winner " + rteam2
+                        
+                    }
+                    
                     
                 }
                 
@@ -482,34 +562,17 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
                 
             }
             
-        } else {
+        } else if game == ind[3] {
+
+            // Losers Final
             
-            arr = ["","","",""]
-            // Finals
+            arr = subsecond(a1: arr[0], a2: arr[1], a3: arr[2], a4: arr[3], rteam1: rteam1, rteam2: rteam2, i: game, user: user, round: 4)
             
-//            for i in ind[3]...ga-1 {
-//
-//                var winner: String = ""
-//
-//                if PronosB[user][i].home_Goals > PronosB[user][i].away_Goals {
-//
-//                    winner = PronosB[user][i].home_Team!
-//
-//                } else if PronosB[user][i].home_Goals < PronosB[user][i].away_Goals {
-//
-//                    winner = PronosB[user][i].away_Team!
-//
-//                }
-//
-//                if winner = rteam1 {
-//
-//
-//
-//                }
-//
-//
-//            }
+        } else if game == ind[3] + 1 {
             
+            // Final
+            
+            arr = subsecond(a1: arr[0], a2: arr[1], a3: arr[2], a4: arr[3], rteam1: rteam1, rteam2: rteam2, i: game, user: user, round: 4)
             
         }
         
