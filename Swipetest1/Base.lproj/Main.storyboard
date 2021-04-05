@@ -44,6 +44,7 @@
                                         <subviews>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2sq-X7-y7E" userLabel="pickerView">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="190.5"/>
+                                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                                             </pickerView>
                                         </subviews>
                                         <constraints>
@@ -132,6 +133,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

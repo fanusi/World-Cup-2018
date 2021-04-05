@@ -21,6 +21,9 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
     
     var fg:Int = 0
     
+    var pg:Int = 0
+    //Perfect guess dummy
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -195,6 +198,7 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
             
             //exampleview.backgroundColor = .black
             exampleview.translatesAutoresizingMaskIntoConstraints = false
+            exampleview.showsVerticalScrollIndicator = false
             viewP.addSubview(exampleview)
             
             
@@ -232,12 +236,16 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
 
                 actualview.backgroundColor = .white
             
+                actualview.layer.masksToBounds = true
+                actualview.layer.borderColor = UIColor.systemGray.cgColor
+                actualview.layer.borderWidth = 1.0
+            
                 createlabels(type: 1, superviewer: actualview, teller: index1, choice1: choice1, team1: team1, team2: team2)
                 createlabels(type: 2, superviewer: actualview, teller: index1, choice1: choice1, team1: team1, team2: team2)
                 createlabels(type: 3, superviewer: actualview, teller: index1, choice1: choice1, team1: team1, team2: team2)
                 createlabels(type: 4, superviewer: actualview, teller: index1, choice1: choice1, team1: team1, team2: team2)
                 
-            let label2 = UILabel(frame: CGRect(x: actualview.bounds.width * 0.01, y: actualview.bounds.height * 0.4, width: actualview.bounds.width * 0.3, height: actualview.bounds.height * 0.3))
+            let label2 = UILabel(frame: CGRect(x: actualview.bounds.width * 0.01, y: actualview.bounds.height * 0.35, width: actualview.bounds.width * 0.3, height: actualview.bounds.height * 0.3))
                 label2.text = PronosB[gebr][0].user
                 label2.font = UIFont.boldSystemFont(ofSize: 14.0)
                 label2.lineBreakMode = .byClipping
@@ -277,6 +285,9 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
                 
                 // Second round
                 
+                pg = 0
+                // Reset perfect guess dummy
+                
                 if PronosA[choice1].home_Team! != "-" && PronosA[choice1].away_Team! != "-" {
                 //If teams are known, then we project the actual game, else the initial user predictions
                 
@@ -293,42 +304,77 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
                 
                 
             }
+            
+            if pg == 1 {
+            //Perfect guess
+            
 
-            if type == 1 {
+                if type == 1 {
+                
+                    x1 = 0.35 * x0
+                    w1 = 0.40 * x0
+                    y1 = 0.20 * y0
+                    
+                    Svalue = Astrings[0]
+                    
+                }
+                
+                if type == 2 {
+                
+                    x1 = 0.80 * x0
+                    w1 = 0.10 * x0
+                    y1 = 0.20 * y0
+                    
+                    Svalue = Astrings[1]
+                    
+                }
+                
+                if type == 3 {
+                
+                    x1 = 0.80 * x0
+                    w1 = 0.10 * x0
+                    y1 = 0.50 * y0
+                    
+                    Svalue = Astrings[2]
+                }
+                
+                if type == 4 {
+                
+                    x1 = 0.35 * x0
+                    w1 = 0.40 * x0
+                    y1 = 0.50 * y0
+                    Svalue = Astrings[3]
+                    
+                }
             
+            } else {
+            // no perfect guess
+                
+                if Astrings[0] != "" {
+                    
+                    Svalue = Astrings[0]
+                    
+                    if Astrings[3] != "" {
+                     
+                        Svalue = "Both teams qualified"
+                    
+                    }
+                        
+                } else if Astrings[3] != "" {
+                    
+                    Svalue = Astrings[3]
+                    
+                    if Astrings[0] != "" {
+                     
+                        Svalue = "Both teams qualified"
+                    
+                    }
+                        
+                }
+                
                 x1 = 0.35 * x0
                 w1 = 0.40 * x0
-                y1 = 0.30 * y0
-                
-                Svalue = Astrings[0]
-                
-            }
-            
-            if type == 2 {
-            
-                x1 = 0.80 * x0
-                w1 = 0.10 * x0
-                y1 = 0.30 * y0
-                
-                Svalue = Astrings[1]
-                
-            }
-            
-            if type == 3 {
-            
-                x1 = 0.80 * x0
-                w1 = 0.10 * x0
-                y1 = 0.60 * y0
-                
-                Svalue = Astrings[2]
-            }
-            
-            if type == 4 {
-            
-                x1 = 0.35 * x0
-                w1 = 0.40 * x0
-                y1 = 0.60 * y0
-                Svalue = Astrings[3]
+                y1 = 0.35 * y0
                 
             }
                 
@@ -369,6 +415,7 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
                 a4 = PronosB[user][i].away_Team!
                 
                 dummy = 1
+                pg = 1
             
             } else {
                 
@@ -417,6 +464,7 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
                 a4 = PronosB[user][i].home_Team!
                 
                 dummy = 1
+                pg = 1
             
             } else {
                 
