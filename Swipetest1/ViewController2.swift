@@ -274,6 +274,9 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
             
             Astrings.removeAll()
             
+            pg = 0
+            // Reset perfect guess dummy
+            
             if choice1 < ind[0] {
                 
                 // First round
@@ -282,12 +285,11 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
                 Astrings.append(String(PronosB[gebr][choice1].away_Goals))
                 Astrings.append(PronosB[gebr][choice1].away_Team!)
                 
+                pg = 1
+                
             } else {
                 
                 // Second round
-                
-                pg = 0
-                // Reset perfect guess dummy
                 
                 if PronosA[choice1].home_Team! != "-" && PronosA[choice1].away_Team! != "-" {
                 //If teams are known, then we project the actual game, else the initial user predictions
@@ -301,15 +303,15 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
                     Astrings.append(String(PronosB[gebr][choice1].away_Goals))
                     Astrings.append(PronosB[gebr][choice1].away_Team!)
                     
+                    pg = 1
+                    
                 }
-                
                 
             }
             
             if pg == 1 {
             //Perfect guess
             
-
                 if type == 1 {
                 
                     x1 = 0.35 * x0
