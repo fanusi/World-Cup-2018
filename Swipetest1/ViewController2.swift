@@ -18,6 +18,7 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
     //Number of subviews on screen
     
     let ind: [Int] = [sr, qf, sf, f, ga]
+    //Index second round, quarter finals, semi finals, finals and last game
     
     var fg:Int = 0
     
