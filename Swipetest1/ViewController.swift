@@ -43,6 +43,9 @@ class ViewController: UIViewController {
     let pr:Int = 43
     //Number of players
     
+    let temp_voortgang = 32
+    //Gespeeld in simulatie => Verdwijnt
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
@@ -152,7 +155,11 @@ class ViewController: UIViewController {
                         //print(niveau1)
                         
                         for n in start...end {
-
+                            
+                            if n < self.temp_voortgang {
+                            //Zal verdwijnen
+                            
+                            
                             //print(niveau1.api.fixtures[n].fixture_id)
                             let newFixture = Pronostiek(context: self.context)
                             newFixture.fixture_ID = Int32(niveau1.api.fixtures[n].fixture_id)
@@ -181,15 +188,27 @@ class ViewController: UIViewController {
                             newFixture.away_Team = niveau1.api.fixtures[n].awayTeam.team_name
                             newFixture.fulltime = niveau1.api.fixtures[n].score.fulltime
                             newFixture.status = niveau1.api.fixtures[n].status
-                            
-                            print(newFixture.fulltime!)
-                            print(newFixture.status!)
-                            print(newFixture.home_Goals)
-                            print(newFixture.away_Goals)
-                            
-                            
                             PronosA.append(newFixture)
                             //try self.context.savePronos2()
+                            
+                            } else {
+                            // Zal verdwijnen
+                                
+                                //print(niveau1.api.fixtures[n].fixture_id)
+                                let newFixture = Pronostiek(context: self.context)
+                                newFixture.fixture_ID = Int32(niveau1.api.fixtures[n].fixture_id)
+                                newFixture.round = "NA"
+                                newFixture.home_Goals = -999
+                                newFixture.away_Goals = -999
+                                
+                                newFixture.home_Team = "-"
+                                newFixture.away_Team = "-"
+                                newFixture.fulltime = "-"
+                                newFixture.status = "NS"
+                                PronosA.append(newFixture)
+                                
+                            }
+                
 
                         }
                     
@@ -216,19 +235,6 @@ class ViewController: UIViewController {
             routine()
             createlabels(view1: view1)
             view1.contentSize = CGSize(width: view1.frame.width, height: view1.frame.height * CGFloat(Double(PronosB.count + 3) * 0.05))
-            
-//            for i in 0...ga-1 {
-//
-//                print(PronosB[0][i].home_Team! + " - " + PronosB[0][i].away_Team!)
-//                print(String(PronosB[0][i].home_Goals) + " - " + String(PronosB[0][i].away_Goals))
-//
-//                print("//")
-//
-//                print(PronosA[i].home_Team! + " - " + PronosB[0][i].away_Team!)
-//                print(String(PronosA[i].home_Goals) + " - " + String(PronosA[i].away_Goals))
-//
-//                print("//")
-//            }
             
         } else {
             
@@ -264,6 +270,7 @@ class ViewController: UIViewController {
         let label0 = UILabel(frame: CGRect(x: br * 0.05, y: ho * 0, width: br * 0.10, height: ho * 0.05))
         let label1 = UILabel(frame: CGRect(x: br * 0.20, y: ho * 0, width: br * 0.40, height: ho * 0.05))
         let label2 = UILabel(frame: CGRect(x: br * 0.65, y: ho * 0, width: br * 0.20, height: ho * 0.05))
+        let label3 = UILabel(frame: CGRect(x: br * 0.85, y: ho * 0, width: br * 0.15, height: ho * 0.05))
   
         label0.textAlignment = NSTextAlignment.center
         label0.text = "Rank"
@@ -280,11 +287,18 @@ class ViewController: UIViewController {
         view1.addSubview(label1)
                             
         label2.textAlignment = NSTextAlignment.center
-        label2.text = "Points"
+        label2.text = "Stand"
         label2.font = UIFont.boldSystemFont(ofSize: 15.0)
         //label.backgroundColor = .red
         label2.textColor = .black
         view1.addSubview(label2)
+        
+        label3.textAlignment = NSTextAlignment.center
+        label3.text = "Last"
+        label3.font = UIFont.boldSystemFont(ofSize: 15.0)
+        //label.backgroundColor = .red
+        label3.textColor = .black
+        view1.addSubview(label3)
         
         
         for i in 0...pr-1 {
@@ -294,6 +308,8 @@ class ViewController: UIViewController {
             let label1 = UILabel(frame: CGRect(x: br * 0.20, y: ho * 0.05 + ho * 0.05 * CGFloat(i), width: br * 0.40, height: ho * 0.05))
             
             let label2 = UILabel(frame: CGRect(x: br * 0.65, y: ho * 0.05 + ho * 0.05 * CGFloat(i), width: br * 0.20, height: ho * 0.05))
+            
+            let label3 = UILabel(frame: CGRect(x: br * 0.85, y: ho * 0.05 + ho * 0.05 * CGFloat(i), width: br * 0.15, height: ho * 0.05))
             
             
             label0.textAlignment = NSTextAlignment.center
@@ -319,6 +335,13 @@ class ViewController: UIViewController {
             label2.textColor = .black
             view1.addSubview(label2)
             
+            label3.textAlignment = NSTextAlignment.center
+            label3.text = String(scores[i].punten_last)
+            label3.font = UIFont.systemFont(ofSize: 15.0)
+            //label.backgroundColor = .red
+            label3.textColor = .black
+            view1.addSubview(label3)
+            
         }
         
     }
@@ -336,6 +359,26 @@ class ViewController: UIViewController {
         return som
         
     }
+    
+    func laatstepunten (speler: [Pronostiek], game: Int) -> String {
+        
+        var str:String
+        
+        str = String(speler[game].statistiek?.punten ?? 0)
+        
+        if str == "0" {
+            
+            str = ""
+            
+        } else {
+            
+            str = "+ " + str
+        }
+        
+        return str
+        
+    }
+
     
     func calc_simple (hg_p: Int, ag_p: Int, hg_r: Int, ag_r: Int) -> Int {
         
@@ -575,7 +618,7 @@ class ViewController: UIViewController {
             
             calculator(speler: PronosB[i])
             
-            let newscore = Scores(user: (PronosB[i].first?.user)! , punten: puntenSommatie(z: ga-1, speler: PronosB[i]), index: i)
+            let newscore = Scores(user: (PronosB[i].first?.user)! , punten: puntenSommatie(z: ga-1, speler: PronosB[i]), index: i, punten_last: laatstepunten(speler: PronosB[i], game: temp_voortgang-1))
 
             scores.append(newscore)
             
