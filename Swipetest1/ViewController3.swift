@@ -87,7 +87,7 @@ class ViewController3: UIViewController {
                 var array = [UIView]()
                 array.removeAll()
                 
-                let n = PronosA.count
+                let n = temp_voortgang
                 
                 for _ in 0 ..< n {
                     array.append(UIView())

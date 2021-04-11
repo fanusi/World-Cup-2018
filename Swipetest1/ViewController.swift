@@ -17,6 +17,9 @@ public var PronosB = [[Pronostiek]]()
 public let b1:CGFloat = 0.15
 // Height of upper bar
 
+public let temp_voortgang = 32
+//Gespeeld in simulatie => Verdwijnt
+
 public let ga:Int = 64
 //Number of matches
 
@@ -42,9 +45,6 @@ class ViewController: UIViewController {
     
     let pr:Int = 43
     //Number of players
-    
-    let temp_voortgang = 32
-    //Gespeeld in simulatie => Verdwijnt
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
@@ -156,7 +156,7 @@ class ViewController: UIViewController {
                         
                         for n in start...end {
                             
-                            if n < self.temp_voortgang {
+                            if n < temp_voortgang {
                             //Zal verdwijnen
                             
                             
@@ -197,7 +197,7 @@ class ViewController: UIViewController {
                                 //print(niveau1.api.fixtures[n].fixture_id)
                                 let newFixture = Pronostiek(context: self.context)
                                 newFixture.fixture_ID = Int32(niveau1.api.fixtures[n].fixture_id)
-                                newFixture.round = "NA"
+                                newFixture.round = niveau1.api.fixtures[n].round
                                 newFixture.home_Goals = -999
                                 newFixture.away_Goals = -999
                                 

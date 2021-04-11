@@ -146,7 +146,15 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
                 
             } else {
                 
+                if PronosA[row-1].home_Team! == "-" {
+                    
+                    game = PronosA[row-1].round!
+                    
+                } else {
+                
                 game = PronosA[row-1].home_Team! + " - " + PronosA[row-1].away_Team!
+                
+                }
                 
             }
     
