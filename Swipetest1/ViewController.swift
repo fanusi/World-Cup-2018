@@ -38,7 +38,7 @@ public let f:Int = 62
 var scores = [Scores]()
 // Users and their scores
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIScrollViewDelegate {
     
     //var PronosB = [[Pronostiek]]()
     // PronosB contains guesses of all players
@@ -65,8 +65,6 @@ class ViewController: UIViewController {
             
             //Only parse on app loading
             fixtureParsing()
-
-            dummy = 1
             
         }
         
@@ -113,12 +111,43 @@ class ViewController: UIViewController {
 
         sview.showsVerticalScrollIndicator = false
         
+        sview.delegate = self
+        
         mainview.addSubview(sview)
         sview.edgeTo(view: mainview)
         scoreView(view1: sview)
     
         
     }
+    
+    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
+
+        dummy = 0
+
+        scrollView.scrollsToTop = true
+
+        scrollView.subviews.forEach { (item) in
+        item.removeFromSuperview()
+        }
+
+        scoreView(view1: scrollView)
+
+    }
+    
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//
+//        dummy = 0
+//
+//        scrollView.scrollsToTop = true
+//
+//        scrollView.subviews.forEach { (item) in
+//        item.removeFromSuperview()
+//        }
+//
+//        scoreView(view1: scrollView)
+//
+//    }
+    
     
     func fixtureParsing () {
                 
@@ -231,8 +260,14 @@ class ViewController: UIViewController {
         if PronosA.count > 0 {
 
             //testpronos()
-            realpronos()
-            routine()
+            
+            if dummy == 0 {
+      
+                realpronos()
+                routine()
+                
+            }
+            
             createlabels(view1: view1)
             view1.contentSize = CGSize(width: view1.frame.width, height: view1.frame.height * CGFloat(Double(PronosB.count + 3) * 0.05))
             
@@ -783,6 +818,8 @@ class ViewController: UIViewController {
         return phg > pag
         
     }
+
+    
 
 
 }
