@@ -112,41 +112,49 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         sview.showsVerticalScrollIndicator = false
         
         sview.delegate = self
+        sview.scrollsToTop = true
         
         mainview.addSubview(sview)
         sview.edgeTo(view: mainview)
         scoreView(view1: sview)
-    
+        print("TOP")
+        print(sview.contentOffset.y)
+        print(sview.contentOffset.x)
         
     }
     
-    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
 
-        dummy = 0
+        print(scrollView.contentOffset.y)
+        print(scrollView.bounces)
+        
+        if scrollView.contentOffset.y == 0 && scrollView.bounces {
+            
+            print("scroll top OK")
+            
+            dummy = 0
+            PronosA.removeAll()
+            PronosB.removeAll()
+            scores.removeAll()
+            
+            scrollView.subviews.forEach { (item) in
+            item.removeFromSuperview()
+            }
+            
+            scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
 
-        scrollView.scrollsToTop = true
+            scrollView.showsVerticalScrollIndicator = false
+            
+            scrollView.delegate = self
+            scrollView.scrollsToTop = true
 
-        scrollView.subviews.forEach { (item) in
-        item.removeFromSuperview()
+            fixtureParsing()
+            
+            scoreView(view1: scrollView)
+            
         }
 
-        scoreView(view1: scrollView)
-
     }
-    
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//
-//        dummy = 0
-//
-//        scrollView.scrollsToTop = true
-//
-//        scrollView.subviews.forEach { (item) in
-//        item.removeFromSuperview()
-//        }
-//
-//        scoreView(view1: scrollView)
-//
-//    }
     
     
     func fixtureParsing () {

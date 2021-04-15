@@ -28,7 +28,7 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dummy = 1
+        //dummy = 1
         
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
