@@ -90,7 +90,7 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
         let chevronLeft = UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .heavy))
         let chevronRight = UIImage(systemName: "chevron.right", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .heavy))
         
-        let title = UILabel(frame: CGRect(x: Bar1.frame.width * 0.3, y: Bar1.frame.height * 0.5, width: Bar1.frame.width * 0.4, height: Bar1.frame.height * 0.30))
+        let title = UILabel(frame: CGRect(x: Bar1.frame.width * 0.3, y: Bar1.frame.height * 0.45, width: Bar1.frame.width * 0.4, height: Bar1.frame.height * 0.35))
         
         title.text = "Pronos"
         title.textAlignment = NSTextAlignment.center

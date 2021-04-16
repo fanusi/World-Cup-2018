@@ -14,7 +14,7 @@ public var PronosA = [Pronostiek]()
 public var PronosB = [[Pronostiek]]()
 // PronosA contains real scores
 
-public let b1:CGFloat = 0.15
+public let b1:CGFloat = 0.12
 // Height of upper bar
 
 public let temp_voortgang = 32
@@ -77,7 +77,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         let chevronLeft = UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .heavy))
         let chevronRight = UIImage(systemName: "chevron.right", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .heavy))
         
-        let title = UILabel(frame: CGRect(x: bar1.frame.width * 0.3, y: bar1.frame.height * 0.5, width: bar1.frame.width * 0.4, height: bar1.frame.height * 0.30))
+        let title = UILabel(frame: CGRect(x: bar1.frame.width * 0.3, y: bar1.frame.height * 0.45, width: bar1.frame.width * 0.4, height: bar1.frame.height * 0.35))
         
         title.text = "Ranking"
         title.textAlignment = NSTextAlignment.center
@@ -123,38 +123,38 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-
-        print(scrollView.contentOffset.y)
-        print(scrollView.bounces)
-        
-        if scrollView.contentOffset.y == 0 && scrollView.bounces {
-            
-            print("scroll top OK")
-            
-            dummy = 0
-            PronosA.removeAll()
-            PronosB.removeAll()
-            scores.removeAll()
-            
-            scrollView.subviews.forEach { (item) in
-            item.removeFromSuperview()
-            }
-            
-            scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-
-            scrollView.showsVerticalScrollIndicator = false
-            
-            scrollView.delegate = self
-            scrollView.scrollsToTop = true
-
-            fixtureParsing()
-            
-            scoreView(view1: scrollView)
-            
-        }
-
-    }
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//
+//        print(scrollView.contentOffset.y)
+//        print(scrollView.bounces)
+//        
+//        if scrollView.contentOffset.y == 0 && scrollView.bounces {
+//            
+//            print("scroll top OK")
+//            
+//            dummy = 0
+//            PronosA.removeAll()
+//            PronosB.removeAll()
+//            scores.removeAll()
+//            
+//            scrollView.subviews.forEach { (item) in
+//            item.removeFromSuperview()
+//            }
+//            
+//            scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+//
+//            scrollView.showsVerticalScrollIndicator = false
+//            
+//            scrollView.delegate = self
+//            scrollView.scrollsToTop = true
+//
+//            fixtureParsing()
+//            
+//            scoreView(view1: scrollView)
+//            
+//        }
+//
+//    }
     
     
     func fixtureParsing () {

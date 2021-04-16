@@ -37,13 +37,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dY5-S7-YdJ" userLabel="SView">
-                                <rect key="frame" x="0.0" y="134.5" width="414" height="761.5"/>
+                                <rect key="frame" x="0.0" y="107.5" width="414" height="788.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FlS-d8-spN" userLabel="View2">
-                                        <rect key="frame" x="0.0" y="571" width="414" height="190.5"/>
+                                        <rect key="frame" x="0.0" y="591.5" width="414" height="197"/>
                                         <subviews>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2sq-X7-y7E" userLabel="pickerView">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="190.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="197"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                             </pickerView>
                                         </subviews>
@@ -55,7 +55,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9mz-ie-xi6" userLabel="View1">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="571"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="591.5"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -72,7 +72,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ajt-i7-l2i" userLabel="Bar1">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="134.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="107.5"/>
                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                             </view>
                         </subviews>
@@ -84,7 +84,7 @@
                             <constraint firstAttribute="trailing" secondItem="ajt-i7-l2i" secondAttribute="trailing" id="InB-vG-5EI"/>
                             <constraint firstAttribute="trailing" secondItem="dY5-S7-YdJ" secondAttribute="trailing" id="UXN-s9-DdL"/>
                             <constraint firstItem="dY5-S7-YdJ" firstAttribute="top" secondItem="ajt-i7-l2i" secondAttribute="bottom" id="UtW-a2-zF5"/>
-                            <constraint firstItem="dY5-S7-YdJ" firstAttribute="height" secondItem="ajt-i7-l2i" secondAttribute="height" multiplier="85/15" id="ZUg-ht-apn"/>
+                            <constraint firstItem="dY5-S7-YdJ" firstAttribute="height" secondItem="ajt-i7-l2i" secondAttribute="height" multiplier="88/12" id="ZUg-ht-apn"/>
                             <constraint firstItem="dY5-S7-YdJ" firstAttribute="leading" secondItem="2WY-9I-NMC" secondAttribute="leading" id="fAd-Ch-8Tb"/>
                             <constraint firstAttribute="bottom" secondItem="dY5-S7-YdJ" secondAttribute="bottom" id="goA-C9-zGN"/>
                             <constraint firstItem="dY5-S7-YdJ" firstAttribute="top" secondItem="ajt-i7-l2i" secondAttribute="bottom" id="xoW-rL-oqM"/>
