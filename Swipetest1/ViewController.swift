@@ -86,21 +86,12 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             view.addSubview(lbar)
         }
         
-        let sview = UIScrollView()
-        
-        sview.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-
-        sview.showsVerticalScrollIndicator = false
-        
-        sview.delegate = self
-        sview.scrollsToTop = true
-        
+        //Add scrollview to mainview
+        let sview = scroller()
         mview.addSubview(sview)
         sview.edgeTo(view: mview)
+        
         scoreView(view1: sview)
-        print("TOP")
-        print(sview.contentOffset.y)
-        print(sview.contentOffset.x)
         
     }
     
@@ -141,6 +132,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     func fixtureParsing () {
                 
                 //Populate PronosA from FootballAPI
+            
+                PronosA.removeAll()
             
                 let headers = [
                     "x-rapidapi-key": "a08ffc63acmshbed8df93dae1449p15e553jsnb3532d9d0c9b",
@@ -902,6 +895,22 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         return livebar
         
     }
+    
+    func scroller () -> UIScrollView {
+        
+        let mainscroll = UIScrollView()
+        
+        mainscroll.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+
+        mainscroll.showsVerticalScrollIndicator = false
+        
+        mainscroll.delegate = self
+        mainscroll.scrollsToTop = true
+        
+        return mainscroll
+        
+    }
+    
 
 
 }
