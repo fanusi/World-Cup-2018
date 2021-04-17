@@ -38,6 +38,8 @@ public let f:Int = 62
 var scores = [Scores]()
 // Users and their scores
 
+var livegames = [Livegames]()
+
 class ViewController: UIViewController, UIScrollViewDelegate {
     
     //var PronosB = [[Pronostiek]]()
@@ -45,6 +47,9 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     let pr:Int = 43
     //Number of players
+    
+    var livebar: Bool = true
+    // Test livebar
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
@@ -68,45 +73,21 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             
         }
         
-        let bar1 = UIView()
-        bar1.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * b1)
-        bar1.backgroundColor = .systemRed
-        //bar1.backgroundColor = UIColor.init(red: 0, green: 209/255, blue: 255/255, alpha: 0.75)
-        view.addSubview(bar1)
+        //Add upper bar
+        upperbar(text: "Ranking", size: b1)
         
-        let chevronLeft = UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .heavy))
-        let chevronRight = UIImage(systemName: "chevron.right", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .heavy))
+        //Add main view
+        let mview = mainview(livebar: livebar, size: b1)
+        view.addSubview(mview)
         
-        let title = UILabel(frame: CGRect(x: bar1.frame.width * 0.3, y: bar1.frame.height * 0.45, width: bar1.frame.width * 0.4, height: bar1.frame.height * 0.35))
-        
-        title.text = "Ranking"
-        title.textAlignment = NSTextAlignment.center
-        title.font = UIFont.boldSystemFont(ofSize: 25.0)
-        title.textColor = .white
-        
-        let cleft = UIButton(type: .custom)
-        cleft.frame = CGRect(x: bar1.frame.width * 0.0, y: bar1.frame.height * 0.5, width: bar1.frame.width * 0.15, height: bar1.frame.height * 0.30)
-        let cright = UIButton(type: .custom)
-        cright.frame = CGRect(x: bar1.frame.width * 0.85, y: bar1.frame.height * 0.5, width: bar1.frame.width * 0.15, height: bar1.frame.height * 0.30)
-        
-        cleft.setImage(chevronLeft, for: UIControl.State.normal)
-        cright.setImage(chevronRight, for: UIControl.State.normal)
-        
-        cleft.tintColor = .white
-        cright.tintColor = .white
-        
-        cleft.addTarget(self, action: #selector(arrowleft), for: .touchUpInside)
-        cright.addTarget(self, action: #selector(arrowright), for: .touchUpInside)
-        
-        bar1.addSubview(title)
-        bar1.addSubview(cleft)
-        bar1.addSubview(cright)
-        
-        let mainview = UIView()
-        mainview.frame = CGRect(x: 0, y: view.frame.height * b1, width: view.frame.width, height: view.frame.height * (1-b1))
-        view.addSubview(mainview)
+        //Add livebar only when game is ongoing
+        if livebar {
+            let lbar = livebar(size: b1)
+            view.addSubview(lbar)
+        }
         
         let sview = UIScrollView()
+        
         sview.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
 
         sview.showsVerticalScrollIndicator = false
@@ -114,8 +95,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         sview.delegate = self
         sview.scrollsToTop = true
         
-        mainview.addSubview(sview)
-        sview.edgeTo(view: mainview)
+        mview.addSubview(sview)
+        sview.edgeTo(view: mview)
         scoreView(view1: sview)
         print("TOP")
         print(sview.contentOffset.y)
@@ -225,6 +206,23 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                             newFixture.away_Team = niveau1.api.fixtures[n].awayTeam.team_name
                             newFixture.fulltime = niveau1.api.fixtures[n].score.fulltime
                             newFixture.status = niveau1.api.fixtures[n].status
+                            
+                            if newFixture.status == "Match Finished" {
+                                    
+                                self.livebar = true
+                                
+                                let lgame = Livegames(team1: newFixture.home_Team!, goals1: Int(newFixture.home_Goals), team2: newFixture.away_Team!, goals2: Int(newFixture.away_Goals))
+                                
+                                livegames.append(lgame)
+                                
+                                print("*******")
+                                print(lgame.team1)
+                                print(lgame.team2)
+                                print(lgame.goals1)
+                                print(lgame.goals2)
+                                        
+                            }
+                                
                             PronosA.append(newFixture)
                             //try self.context.savePronos2()
                             
@@ -826,8 +824,84 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         return phg > pag
         
     }
-
     
+    func upperbar(text: String, size: CGFloat) {
+        
+        
+        let bar1 = UIView()
+        bar1.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * size)
+        bar1.backgroundColor = .systemRed
+        //bar1.backgroundColor = UIColor.init(red: 0, green: 209/255, blue: 255/255, alpha: 0.75)
+        view.addSubview(bar1)
+        
+        let chevronLeft = UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .heavy))
+        let chevronRight = UIImage(systemName: "chevron.right", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .heavy))
+        
+        let title = UILabel(frame: CGRect(x: bar1.frame.width * 0.3, y: bar1.frame.height * 0.45, width: bar1.frame.width * 0.4, height: bar1.frame.height * 0.35))
+        
+        title.text = text
+        title.textAlignment = NSTextAlignment.center
+        title.font = UIFont.boldSystemFont(ofSize: 25.0)
+        title.textColor = .white
+        
+        let cleft = UIButton(type: .custom)
+        cleft.frame = CGRect(x: bar1.frame.width * 0.0, y: bar1.frame.height * 0.5, width: bar1.frame.width * 0.15, height: bar1.frame.height * 0.30)
+        let cright = UIButton(type: .custom)
+        cright.frame = CGRect(x: bar1.frame.width * 0.85, y: bar1.frame.height * 0.5, width: bar1.frame.width * 0.15, height: bar1.frame.height * 0.30)
+        
+        cleft.setImage(chevronLeft, for: UIControl.State.normal)
+        cright.setImage(chevronRight, for: UIControl.State.normal)
+        
+        cleft.tintColor = .white
+        cright.tintColor = .white
+        
+        cleft.addTarget(self, action: #selector(arrowleft), for: .touchUpInside)
+        cright.addTarget(self, action: #selector(arrowright), for: .touchUpInside)
+        
+        bar1.addSubview(title)
+        bar1.addSubview(cleft)
+        bar1.addSubview(cright)
+        
+    }
+    
+    func mainview (livebar: Bool, size: CGFloat) -> UIView {
+        
+        let mainview = UIView()
+        
+        if livebar {
+            
+            let lbview = UIView()
+            lbview.frame = CGRect(x: 0, y: view.frame.height * size, width: view.frame.width, height: view.frame.height * size * 0.7)
+            lbview.backgroundColor = .orange
+            view.addSubview(lbview)
+            
+            mainview.frame = CGRect(x: 0, y: view.frame.height * size * 1.7, width: view.frame.width, height: view.frame.height * (1 - size * 1.7))
+            
+
+            
+            
+        } else {
+            
+            mainview.frame = CGRect(x: 0, y: view.frame.height * size, width: view.frame.width, height: view.frame.height * (1 - size))
+            
+        }
+        
+        //view.addSubview(mainview)
+    
+        return mainview
+        
+    }
+
+    func livebar (size: CGFloat) -> UIView {
+        
+        let livebar = UIView()
+
+        livebar.frame = CGRect(x: 0, y: view.frame.height * size, width: view.frame.width, height: view.frame.height * size * 0.7)
+        livebar.backgroundColor = .orange
+    
+        return livebar
+        
+    }
 
 
 }

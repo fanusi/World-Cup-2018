@@ -11,6 +11,7 @@
 		7552E6BAA08C6C452448EE1F /* Pods_World_Cup_2018Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D151E6F4462E23D6ABCD1120 /* Pods_World_Cup_2018Tests.framework */; };
 		AE0B9DE42615D2E900F848A6 /* WK 18.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = AE0B9DE32615D2E900F848A6 /* WK 18.xlsx */; };
 		AE31D5762604B65600C4CB0F /* Scores.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE31D5752604B65600C4CB0F /* Scores.swift */; };
+		AE511A702629E01200C10B2A /* Livegames.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE511A6F2629E01200C10B2A /* Livegames.swift */; };
 		AE780E0025DAC82C006C8EEF /* EuroJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE780DFF25DAC82C006C8EEF /* EuroJSON.swift */; };
 		AE780E0825DAC9D9006C8EEF /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE780E0525DAC9D9006C8EEF /* UIScrollView+.swift */; };
 		AE780E0925DAC9D9006C8EEF /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE780E0625DAC9D9006C8EEF /* UIView+.swift */; };
@@ -62,6 +63,7 @@
 		AE0B9DE32615D2E900F848A6 /* WK 18.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WK 18.xlsx"; sourceTree = SOURCE_ROOT; };
 		AE31C4B22609F87400B41ACB /* Test1.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Test1.xlsx; sourceTree = SOURCE_ROOT; };
 		AE31D5752604B65600C4CB0F /* Scores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scores.swift; sourceTree = "<group>"; };
+		AE511A6F2629E01200C10B2A /* Livegames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Livegames.swift; sourceTree = "<group>"; };
 		AE780DFF25DAC82C006C8EEF /* EuroJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EuroJSON.swift; sourceTree = "<group>"; };
 		AE780E0525DAC9D9006C8EEF /* UIScrollView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIScrollView+.swift"; path = "Swipetest1/UIScrollView+.swift"; sourceTree = SOURCE_ROOT; };
 		AE780E0625DAC9D9006C8EEF /* UIView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+.swift"; path = "Swipetest1/UIView+.swift"; sourceTree = SOURCE_ROOT; };
@@ -177,6 +179,7 @@
 				AEB79A0F25DA706900A6CCE0 /* Swipetest1.xcdatamodeld */,
 				AE780DFF25DAC82C006C8EEF /* EuroJSON.swift */,
 				AE31D5752604B65600C4CB0F /* Scores.swift */,
+				AE511A6F2629E01200C10B2A /* Livegames.swift */,
 			);
 			path = Swipetest1;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				AEB79A3D25DA7F5200A6CCE0 /* ViewController2.swift in Sources */,
 				AE31D5762604B65600C4CB0F /* Scores.swift in Sources */,
 				AE780E0825DAC9D9006C8EEF /* UIScrollView+.swift in Sources */,
+				AE511A702629E01200C10B2A /* Livegames.swift in Sources */,
 				AE780E0A25DAC9D9006C8EEF /* UILabel+.swift in Sources */,
 				AEB79A1125DA706900A6CCE0 /* Swipetest1.xcdatamodeld in Sources */,
 				AE780E0025DAC82C006C8EEF /* EuroJSON.swift in Sources */,

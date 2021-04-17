@@ -1,0 +1,28 @@
+//
+//  Livegames.swift
+//  World Cup 2018
+//
+//  Created by Stéphane Trouvé on 16/04/2021.
+//
+
+import Foundation
+
+
+class Livegames {
+    
+    var team1: String
+    var goals1: Int
+    var team2: String
+    var goals2: Int
+
+    
+    init(team1: String, goals1: Int, team2: String, goals2: Int) {
+        
+        self.team1 = team1
+        self.goals1 = goals1
+        self.team2 = team2
+        self.goals2 = goals2
+
+    }
+    
+}
