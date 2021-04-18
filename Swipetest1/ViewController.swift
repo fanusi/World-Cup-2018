@@ -71,15 +71,17 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             
         }
         
-        //Add upper bar
-        upperbar(text: "Ranking", size: b1)
-        
         //Create views and ranking
         initiate()
         
     }
     
     func initiate() {
+        
+        removeSV(viewsv: view)
+        
+        //Add upper bar
+        upperbar(text: "Ranking", size: b1)
         
         if PronosA.count > 0 {
             
@@ -175,8 +177,20 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                             let newFixture = Pronostiek(context: self.context)
                             newFixture.fixture_ID = Int32(niveau1.api.fixtures[n].fixture_id)
                             newFixture.round = niveau1.api.fixtures[n].round
-                            newFixture.home_Goals = Int16(niveau1.api.fixtures[n].goalsHomeTeam)
-                            newFixture.away_Goals = Int16(niveau1.api.fixtures[n].goalsAwayTeam)
+                            
+                                if n == 2 {
+                                    
+                                    newFixture.home_Goals = Int16.random(in: 0..<4)
+                                    newFixture.away_Goals = Int16.random(in: 0..<4)
+                                    newFixture.status = "Live Test"
+                                    
+                                } else {
+                                    
+                                    newFixture.home_Goals = Int16(niveau1.api.fixtures[n].goalsHomeTeam)
+                                    newFixture.away_Goals = Int16(niveau1.api.fixtures[n].goalsAwayTeam)
+                                    newFixture.status = niveau1.api.fixtures[n].status
+                                }
+                        
                             
                             if n >= sr && niveau1.api.fixtures[n].statusShort == "PEN" {
                                 
@@ -200,7 +214,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                             newFixture.fulltime = niveau1.api.fixtures[n].score.fulltime
                             newFixture.status = niveau1.api.fixtures[n].status
                             
-                            if newFixture.status == "Match Finished" {
+                            if newFixture.status == "Live Test" {
                                     
                                 self.livebar = true
                                 
@@ -869,13 +883,15 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         livebar.frame = CGRect(x: 0, y: view.frame.height * size, width: view.frame.width, height: view.frame.height * size * 0.7)
         livebar.backgroundColor = .orange
         
-        let updateimg = UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .heavy))
+        let updateimg = UIImage(systemName: "arrow.triangle.2.circlepath.circle")
         let updatebtn = UIButton(type: .custom)
-        updatebtn.frame = CGRect(x: livebar.frame.width * 0.0, y: livebar.frame.height * 0.5, width: livebar.frame.width * 0.15, height: livebar.frame.height * 0.30)
+        updatebtn.frame = CGRect(x: livebar.frame.width * 0.80, y: livebar.frame.height * 0.4, width: livebar.frame.width * 0.15, height: livebar.frame.height * 0.30)
 
         updatebtn.setImage(updateimg, for: UIControl.State.normal)
         updatebtn.tintColor = .white
-        updatebtn.addTarget(self, action: #selector(arrowleft), for: .touchUpInside)
+        //updatebtn.addTarget(self, action: #selector(arrowleft), for: .touchUpInside)
+        
+        updatebtn.addTarget(self, action: #selector(btnclicked), for: .touchUpInside)
         
         livebar.addSubview(updatebtn)
     
@@ -896,6 +912,22 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         
         return mainscroll
         
+    }
+    
+    func removeSV (viewsv: UIView) {
+     
+        viewsv.subviews.forEach { (item) in
+        item.removeFromSuperview()
+        }
+        
+    }
+    
+    @objc func btnclicked() {
+        
+        dummy = 0
+        fixtureParsing()
+        initiate()
+
     }
     
 
