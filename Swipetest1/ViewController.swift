@@ -48,7 +48,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     let pr:Int = 43
     //Number of players
     
-    var livebar: Bool = true
+    var livebar: Bool = false
     // Test livebar
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -64,8 +64,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         leftSwipe.direction = UISwipeGestureRecognizer.Direction.left
         self.view.addGestureRecognizer(leftSwipe)
         
-        print(dummy)
-        
         if dummy == 0 {
             
             //Only parse on app loading
@@ -76,58 +74,60 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         //Add upper bar
         upperbar(text: "Ranking", size: b1)
         
-        //Add main view
-        let mview = mainview(livebar: livebar, size: b1)
-        view.addSubview(mview)
-        
-        //Add livebar only when game is ongoing
-        if livebar {
-            let lbar = livebar(size: b1)
-            view.addSubview(lbar)
-        }
-        
-        //Add scrollview to mainview
-        let sview = scroller()
-        mview.addSubview(sview)
-        sview.edgeTo(view: mview)
-        
-        scoreView(view1: sview)
+        //Create views and ranking
+        initiate()
         
     }
     
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//
-//        print(scrollView.contentOffset.y)
-//        print(scrollView.bounces)
-//        
-//        if scrollView.contentOffset.y == 0 && scrollView.bounces {
-//            
-//            print("scroll top OK")
-//            
-//            dummy = 0
-//            PronosA.removeAll()
-//            PronosB.removeAll()
-//            scores.removeAll()
-//            
-//            scrollView.subviews.forEach { (item) in
-//            item.removeFromSuperview()
-//            }
-//            
-//            scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-//
-//            scrollView.showsVerticalScrollIndicator = false
-//            
-//            scrollView.delegate = self
-//            scrollView.scrollsToTop = true
-//
-//            fixtureParsing()
-//            
-//            scoreView(view1: scrollView)
-//            
-//        }
-//
-//    }
-    
+    func initiate() {
+        
+        if PronosA.count > 0 {
+            
+            //Set true for testing
+            livebar = true
+            
+            //Add main view
+            let mview = mainview(livebar: livebar, size: b1)
+            view.addSubview(mview)
+            
+            //Add livebar only when game is ongoing
+            if livebar {
+                let lbar = livebar(size: b1)
+                view.addSubview(lbar)
+            }
+            
+            //Add scrollview to mainview
+            let sview = scroller()
+            mview.addSubview(sview)
+            sview.edgeTo(view: mview)
+            
+            scoreView(view1: sview)
+            
+        } else {
+
+            //Add main view
+            let mview = mainview(livebar: livebar, size: b1)
+            view.addSubview(mview)
+            
+            let br = mview.bounds.width
+            let ho = mview.bounds.height
+            let label1 = UILabel(frame: CGRect(x: br * 0.40, y: ho * 0.35, width: br * 0.40, height: ho * 0.25))
+            label1.textAlignment = NSTextAlignment.left
+            label1.font.withSize(18)
+            label1.text = "Loading..."
+            label1.textColor = .black
+            mview.addSubview(label1)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            
+                mview.removeFromSuperview()
+                self.initiate()
+            
+            }
+            
+        }
+        
+    }
     
     func fixtureParsing () {
                 
@@ -256,41 +256,18 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     func scoreView (view1: UIScrollView) {
         
-        if PronosA.count > 0 {
-
-            //testpronos()
             
-            if dummy == 0 {
-      
-                realpronos()
-                routine()
-                
-            }
-            
-            createlabels(view1: view1)
-            view1.contentSize = CGSize(width: view1.frame.width, height: view1.frame.height * CGFloat(Double(PronosB.count + 3) * 0.05))
-            
-        } else {
-            
-            let br = view1.bounds.width
-            let ho = view1.bounds.height
-            let label1 = UILabel(frame: CGRect(x: br * 0.40, y: ho * 0.35, width: br * 0.40, height: ho * 0.25))
-            label1.textAlignment = NSTextAlignment.left
-            label1.font.withSize(18)
-            label1.text = "Fetching..."
-            label1.textColor = .black
-            view1.addSubview(label1)
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            
-                view1.subviews.forEach { (item) in
-                item.removeFromSuperview()
-                }
-                self.scoreView(view1: view1)
-            
-            }
+        if dummy == 0 {
+  
+            realpronos()
+            routine()
             
         }
+        
+        createlabels(view1: view1)
+        view1.contentSize = CGSize(width: view1.frame.width, height: view1.frame.height * CGFloat(Double(PronosB.count + 3) * 0.05))
+        
+        dummy = 1
         
     }
     
@@ -891,6 +868,16 @@ class ViewController: UIViewController, UIScrollViewDelegate {
 
         livebar.frame = CGRect(x: 0, y: view.frame.height * size, width: view.frame.width, height: view.frame.height * size * 0.7)
         livebar.backgroundColor = .orange
+        
+        let updateimg = UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .heavy))
+        let updatebtn = UIButton(type: .custom)
+        updatebtn.frame = CGRect(x: livebar.frame.width * 0.0, y: livebar.frame.height * 0.5, width: livebar.frame.width * 0.15, height: livebar.frame.height * 0.30)
+
+        updatebtn.setImage(updateimg, for: UIControl.State.normal)
+        updatebtn.tintColor = .white
+        updatebtn.addTarget(self, action: #selector(arrowleft), for: .touchUpInside)
+        
+        livebar.addSubview(updatebtn)
     
         return livebar
         
