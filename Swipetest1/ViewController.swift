@@ -136,6 +136,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                 //Populate PronosA from FootballAPI
             
                 PronosA.removeAll()
+                livegames.removeAll()
             
                 let headers = [
                     "x-rapidapi-key": "a08ffc63acmshbed8df93dae1449p15e553jsnb3532d9d0c9b",
@@ -178,6 +179,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                             newFixture.fixture_ID = Int32(niveau1.api.fixtures[n].fixture_id)
                             newFixture.round = niveau1.api.fixtures[n].round
                             
+                                //if n == 2 || n == 3 {
                                 if n == 2 {
                                     
                                     newFixture.home_Goals = Int16.random(in: 0..<4)
@@ -212,7 +214,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                             newFixture.home_Team = niveau1.api.fixtures[n].homeTeam.team_name
                             newFixture.away_Team = niveau1.api.fixtures[n].awayTeam.team_name
                             newFixture.fulltime = niveau1.api.fixtures[n].score.fulltime
-                            newFixture.status = niveau1.api.fixtures[n].status
+                            //newFixture.status = niveau1.api.fixtures[n].status
                             
                             if newFixture.status == "Live Test" {
                                     
@@ -856,7 +858,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             
             let lbview = UIView()
             lbview.frame = CGRect(x: 0, y: view.frame.height * size, width: view.frame.width, height: view.frame.height * size * 0.7)
-            lbview.backgroundColor = .orange
+            lbview.backgroundColor = .black
             view.addSubview(lbview)
             
             mainview.frame = CGRect(x: 0, y: view.frame.height * size * 1.7, width: view.frame.width, height: view.frame.height * (1 - size * 1.7))
@@ -881,7 +883,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         let livebar = UIView()
 
         livebar.frame = CGRect(x: 0, y: view.frame.height * size, width: view.frame.width, height: view.frame.height * size * 0.7)
-        livebar.backgroundColor = .orange
+        livebar.backgroundColor = .black
         
         let updateimg = UIImage(systemName: "arrow.triangle.2.circlepath.circle")
         let updatebtn = UIButton(type: .custom)
@@ -892,10 +894,45 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         //updatebtn.addTarget(self, action: #selector(arrowleft), for: .touchUpInside)
         
         updatebtn.addTarget(self, action: #selector(btnclicked), for: .touchUpInside)
+        print("Live")
+        print(livegames.count)
+        
+        if livegames.count == 1 {
+        // A single game is being played
+            
+            newlabel(view1: livebar, x: 0.02, y: 0.4, width: 0.35, height: 0.3, text: livegames[0].team1 + " - " + livegames[0].team2, fontsize: 16.0, center: false)
+            newlabel(view1: livebar, x: 0.50, y: 0.4, width: 0.20, height: 0.3, text: String(livegames[0].goals1) + " - " + String(livegames[0].goals2), fontsize: 16.0, center: true)
+            
+            
+        } else if livegames.count == 2 {
+        // Two games are being played
+            
+            newlabel(view1: livebar, x: 0.02, y: 0.15, width: 0.35, height: 0.3, text: livegames[0].team1 + " - " + livegames[0].team2, fontsize: 14.0, center: false)
+            newlabel(view1: livebar, x: 0.50, y: 0.15, width: 0.20, height: 0.3, text: String(livegames[0].goals1) + " - " + String(livegames[0].goals2), fontsize: 14.0, center: true)
+            
+            newlabel(view1: livebar, x: 0.02, y: 0.5, width: 0.35, height: 0.3, text: livegames[1].team1 + " - " + livegames[1].team2, fontsize: 14.0, center: false)
+            newlabel(view1: livebar, x: 0.50, y: 0.5, width: 0.20, height: 0.3, text: String(livegames[1].goals1) + " - " + String(livegames[1].goals2), fontsize: 14.0, center: true)
+            
+        }
         
         livebar.addSubview(updatebtn)
     
         return livebar
+        
+    }
+    
+    func newlabel (view1: UIView, x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, text: String, fontsize: CGFloat, center: Bool) {
+        
+        let label = UILabel(frame: CGRect(x: view1.frame.width * x, y: view1.frame.height * y, width: view1.frame.width * width, height: view1.frame.height * height))
+        if center {
+            label.textAlignment = NSTextAlignment.center
+        } else {
+            label.textAlignment = NSTextAlignment.left
+        }
+        label.text = text
+        label.font = UIFont.boldSystemFont(ofSize: fontsize)
+        label.textColor = .white
+        view1.addSubview(label)
         
     }
     
