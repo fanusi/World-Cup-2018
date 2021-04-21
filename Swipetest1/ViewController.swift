@@ -9,6 +9,7 @@ import UIKit
 import CoreXLSX
 
 public var dummy = Int()
+public var dummy2 = Int()
 
 public var PronosA = [Pronostiek]()
 public var PronosB = [[Pronostiek]]()
@@ -68,6 +69,13 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             
             //Only parse on app loading
             fixtureParsing()
+            
+        }
+        
+        if dummy2 == 0 {
+            
+            realpronos()
+            dummy2 = 1
             
         }
         
@@ -220,7 +228,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                                     
                                 self.livebar = true
                                 
-                                let lgame = Livegames(team1: newFixture.home_Team!, goals1: Int(newFixture.home_Goals), team2: newFixture.away_Team!, goals2: Int(newFixture.away_Goals))
+                                let lgame = Livegames(index: n, team1: newFixture.home_Team!, goals1: Int(newFixture.home_Goals), team2: newFixture.away_Team!, goals2: Int(newFixture.away_Goals))
                                 
                                 livegames.append(lgame)
                                 
@@ -275,7 +283,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             
         if dummy == 0 {
   
-            realpronos()
             routine()
             
         }
@@ -297,7 +304,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         let label0 = UILabel(frame: CGRect(x: br * 0.05, y: ho * 0, width: br * 0.10, height: ho * 0.05))
         let label1 = UILabel(frame: CGRect(x: br * 0.20, y: ho * 0, width: br * 0.40, height: ho * 0.05))
         let label2 = UILabel(frame: CGRect(x: br * 0.65, y: ho * 0, width: br * 0.20, height: ho * 0.05))
-        let label3 = UILabel(frame: CGRect(x: br * 0.85, y: ho * 0, width: br * 0.15, height: ho * 0.05))
+        let label3 = UILabel(frame: CGRect(x: br * 0.85, y: ho * 0, width: br * 0.12, height: ho * 0.05))
   
         label0.textAlignment = NSTextAlignment.center
         label0.text = "Rank"
@@ -321,7 +328,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         view1.addSubview(label2)
         
         label3.textAlignment = NSTextAlignment.center
-        label3.text = "Last"
+        label3.text = "Prono"
         label3.font = UIFont.boldSystemFont(ofSize: 15.0)
         //label.backgroundColor = .red
         label3.textColor = .black
@@ -336,7 +343,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             
             let label2 = UILabel(frame: CGRect(x: br * 0.65, y: ho * 0.05 + ho * 0.05 * CGFloat(i), width: br * 0.20, height: ho * 0.05))
             
-            let label3 = UILabel(frame: CGRect(x: br * 0.85, y: ho * 0.05 + ho * 0.05 * CGFloat(i), width: br * 0.15, height: ho * 0.05))
+            let label3 = UILabel(frame: CGRect(x: br * 0.85, y: ho * 0.05 + ho * 0.05 * CGFloat(i), width: br * 0.12, height: ho * 0.05))
             
             
             label0.textAlignment = NSTextAlignment.center
@@ -363,10 +370,34 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             view1.addSubview(label2)
             
             label3.textAlignment = NSTextAlignment.center
-            label3.text = String(scores[i].punten_last)
+
+            if livegames.count > 0 {
+                
+                let temp1: String = String(PronosB[i][livegames[0].index].home_Goals)
+                let temp2: String = String(PronosB[i][livegames[0].index].away_Goals)
+                let temp3: String = temp1 + "-" + temp2
+                label3.text = temp3
+                
+                let temp4: String = String(PronosA[livegames[0].index].home_Goals)
+                let temp5: String = String(PronosA[livegames[0].index].away_Goals)
+                let temp6: String = temp4 + "-" + temp5
+                
+                if temp3 == temp6 {
+                    label3.textColor = .green
+                    label3.backgroundColor = .black
+                } else {
+                    label3.textColor = .black
+                }
+                
+            } else {
+                
+                label3.text = ""
+                
+            }
+
             label3.font = UIFont.systemFont(ofSize: 15.0)
             //label.backgroundColor = .red
-            label3.textColor = .black
+            
             view1.addSubview(label3)
             
         }
@@ -645,7 +676,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             
             calculator(speler: PronosB[i])
             
-            let newscore = Scores(user: (PronosB[i].first?.user)! , punten: puntenSommatie(z: ga-1, speler: PronosB[i]), index: i, punten_last: laatstepunten(speler: PronosB[i], game: temp_voortgang-1))
+            let newscore = Scores(user: (PronosB[i].first?.user)! , punten: puntenSommatie(z: ga-1, speler: PronosB[i]), index: i)
 
             scores.append(newscore)
             
