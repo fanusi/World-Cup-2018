@@ -373,8 +373,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
 
             if livegames.count > 0 {
                 
-                let temp1: String = String(PronosB[i][livegames[0].index].home_Goals)
-                let temp2: String = String(PronosB[i][livegames[0].index].away_Goals)
+                let temp1: String = String(PronosB[scores[i].index][livegames[0].index].home_Goals)
+                let temp2: String = String(PronosB[scores[i].index][livegames[0].index].away_Goals)
                 let temp3: String = temp1 + "-" + temp2
                 label3.text = temp3
                 
