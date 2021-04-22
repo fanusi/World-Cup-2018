@@ -18,7 +18,7 @@ public var PronosB = [[Pronostiek]]()
 public let b1:CGFloat = 0.12
 // Height of upper bar
 
-public let temp_voortgang = 32
+public let temp_voortgang = 64
 //Gespeeld in simulatie => Verdwijnt
 
 public let ga:Int = 64
@@ -72,13 +72,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             
         }
         
-        if dummy2 == 0 {
-            
-            realpronos()
-            dummy2 = 1
-            
-        }
-        
         //Create views and ranking
         initiate()
         
@@ -92,6 +85,13 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         upperbar(text: "Ranking", size: b1)
         
         if PronosA.count > 0 {
+            
+            if dummy2 == 0 {
+                
+                realpronos()
+                dummy2 = 1
+                
+            }
             
             //Set true for testing
             livebar = true

@@ -140,7 +140,7 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
                 
         var game: String = "No data"
         
-        if PronosB.count > 0 {
+        if PronosA.count > 0 {
             
             if row == 0 {
                 
